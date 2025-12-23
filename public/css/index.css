@@ -3,7 +3,60 @@
   padding: 0;
 }
 
-#hero{
+.hero-image img{
  width: 100vw;
  height: auto;
+}
+
+/* HERO IMAGE */
+.hero-image {
+  display: block;
+  width: 100%;
+}
+
+#hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* HERO BADGES */
+#hero-badges {
+  padding: 40px 20px;
+  background: #fff;
+}
+
+#hero-badges h1 {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+/* BADGE TILE */
+.badge-tile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* ICON PLACEHOLDER */
+.badge-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  background: #f3f3f3;
+  border-radius: 50%;
+}
+
+/* CONTENT */
+.badge-content h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.badge-content p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
 }
