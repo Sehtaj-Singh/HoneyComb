@@ -1,0 +1,10 @@
+//external modules
+const express = require(`express`);
+const storeRouter = express.Router();
+
+//controller module
+const storeController = require(`../controllers/storeController`);
+
+storeRouter.get(`/` ,  storeController.getIndex);
+
+module.exports = storeRouter;

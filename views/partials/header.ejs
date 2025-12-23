@@ -1,0 +1,68 @@
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- Left: Brand -->
+    <div class="header-left">
+      <a href="/" class="brand-name">honeycomb</a>
+    </div>
+
+    <!-- Right: Icons -->
+    <div class="header-right">
+
+      <!-- Search Button -->
+      <button class="icon-btn" id="searchBtn" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <!-- Cart Button -->
+      <a href="/cart" class="icon-btn" aria-label="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+
+      <!-- Menu Button -->
+      <button class="icon-btn" id="menuBtn" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- SEARCH MODAL -->
+<div class="search-modal" id="searchModal">
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Search products..."
+      aria-label="Search products"
+    />
+    <button class="icon-btn">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
+</div>
+
+<!-- SIDE MENU MODAL -->
+<div class="side-menu" id="sideMenu">
+  <div class="side-menu-inner">
+
+    <button class="close-btn" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <nav class="side-nav">
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/process">Our Process</a>
+
+      <% if (!locals.user) { %>
+        <a href="/login">Login</a>
+      <% } else { %>
+        <a href="/account">My Account</a>
+        <a href="/logout">Logout</a>
+      <% } %>
+    </nav>
+
+  </div>
+</div>
