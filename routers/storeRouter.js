@@ -23,5 +23,10 @@ storeRouter.use(refreshSession);
 
 storeRouter.get('/orders', storeController.getOrders);
 storeRouter.get('/profile', storeController.getProfile);
+storeRouter.get("/cart", storeController.getCart);
+
+// cart actions
+storeRouter.post("/cart/add", storeController.addToCart);
+storeRouter.post("/cart/remove", storeController.removeFromCart);
 
 module.exports = storeRouter;

@@ -121,3 +121,75 @@ exports.getProfile = async (req, res) => {
     });
   }
 };
+
+
+// --------------------
+// VIEW CART
+// --------------------
+exports.getCart = (req, res) => {
+  const cart = req.session.cart || [];
+
+  res.render("pages/cart", {
+    active: "cart",
+    cart
+  });
+};
+
+// --------------------
+// ADD TO CART
+// --------------------
+exports.addToCart = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    const product = await ProductDB.findById(productId);
+    if (!product) return res.redirect("/");
+
+    // init cart
+    if (!req.session.cart) {
+      req.session.cart = [];
+    }
+
+    const cart = req.session.cart;
+
+    // check existing item
+    const existingItem = cart.find(
+      item => item.productId === productId
+    );
+
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        productId: product._id.toString(),
+        name: product.name,
+        weight: product.weight,
+        price: product.price,
+        quantity: 1
+      });
+    }
+
+    res.redirect("/cart");
+
+  } catch (err) {
+    console.error("Add to cart error:", err);
+    res.redirect("/");
+  }
+};
+
+// --------------------
+// REMOVE FROM CART
+// --------------------
+exports.removeFromCart = (req, res) => {
+  const { productId } = req.body;
+
+  if (!req.session.cart) {
+    return res.redirect("/cart");
+  }
+
+  req.session.cart = req.session.cart.filter(
+    item => item.productId !== productId
+  );
+
+  res.redirect("/cart");
+};

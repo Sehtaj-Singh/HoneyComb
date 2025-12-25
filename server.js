@@ -3,6 +3,7 @@ const path = require(`path`);
 const express = require(`express`);
 const cookieParser = require('cookie-parser');
 const { default: mongoose } = require("mongoose");
+const session = require("express-session");
 
 // Load environment variables
 const dotenv = require('dotenv');
@@ -30,6 +31,19 @@ const server = express();
 server.use(express.urlencoded());
 server.use(express.static(path.join(rootDir,`public`)));
 server.use(cookieParser()); // ✅ must come before routes for cookies
+
+// Testing session 
+server.use(session({
+  name: "honey.sid",
+  secret: "dev-secret",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: false
+  }
+}));
 
 //routers
 server.use(storeRouter);
