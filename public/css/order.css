@@ -1,0 +1,171 @@
+/* =====================================================
+   EMPTY ORDERS STATE
+   ===================================================== */
+
+.orders-empty {
+  padding: 4vh 6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+}
+
+/* Title */
+
+.orders-empty h2 {
+  font-family: var(--font-title); /* Oswald */
+  font-size: 3vh;
+  letter-spacing: 1.5px;
+  color: #414664;
+  margin-bottom: 2vh;
+}
+
+/* Illustration */
+
+.orders-empty img {
+  width: 80vw;
+  max-width: 420px;
+  height: auto;
+  margin: 3vh 0;
+}
+
+/* Description text */
+
+.orders-empty p {
+  font-family: var(--font-body); /* Inter */
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a3b2a;
+  margin-bottom: 4vh;
+  max-width: 420px;
+}
+
+/* CTA wrapper */
+
+.anchor-btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* CTA button */
+
+.anchor-btn a {
+  display: inline-block;
+  padding: 12px 28px;
+  font-family: var(--font-button); /* Poppins */
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    to right,
+    #f6c760 0%,
+    #e8b146 30%,
+    #d89a2b 55%,
+    #c4881f 100%
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 6px 16px rgba(216, 154, 43, 0.35);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover / Tap feedback */
+
+.anchor-btn a:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 22px rgba(216, 154, 43, 0.4);
+}
+
+/* =====================================================
+   DESKTOP REFINEMENT
+   ===================================================== */
+
+@media (min-width: 768px) {
+
+  .orders-empty {
+    padding: 6vh 4vw;
+  }
+
+  .orders-empty h2 {
+    font-size: 40px;
+  }
+
+  .orders-empty p {
+    font-size: 22px;
+  }
+
+  .orders-empty img {
+    margin: 4vh 0;
+  }
+
+  #no-order-wrap{
+    display: flex;
+  }
+  
+.anchor-btn a{
+  padding: 16px 32px;
+  font-size: 18px;
+}
+}
+
+@media (min-width: 1024px) {
+
+  .orders-empty {
+    min-height: calc(100vh - 8vh);
+    padding: 6vh 10vw;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8vw;
+  }
+
+  /* Left: Illustration */
+  .orders-visual img {
+    width: 420px;
+    max-width: 40vw;
+    height: auto;
+  }
+
+  /* Right: Content */
+  .orders-content {
+    max-width: 420px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .orders-content h2 {
+    font-family: var(--font-title);
+    font-size: 36px;
+    color: #414664;
+    margin: 0;
+  }
+
+  .orders-content p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a3b2a;
+    margin: 0;
+  }
+
+  .anchor-btn {
+    margin-top: 8px;
+  }
+
+  .anchor-btn a {
+    align-self: flex-start;
+    padding: 12px 30px;
+    width: fit-content;
+  }
+}

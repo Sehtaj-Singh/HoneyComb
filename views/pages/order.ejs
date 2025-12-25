@@ -6,6 +6,7 @@
   <title>Document</title>
 
     <%- include('../partials/link') %>
+    <link rel="stylesheet" href="/css/order.css" />
     
 </head>
 <body>
@@ -22,10 +23,19 @@
 
       <% if (isLoggedIn && !hasOrders) { %>
   <section class="orders-empty">
+  <div class="orders-visual">
+    <img src="assets/no-order.jpg" alt="no order">
+  </div>
+
+  <div class="orders-content">
     <h2>No orders yet</h2>
     <p>You haven’t placed any orders.</p>
-    <a href="/store">Shop Now</a>
-  </section>
+    <div class="anchor-btn">
+      <a href="/store">Shop Now</a>
+    </div>
+  </div>
+</section>
+
 <% } %>
 
 <% if (isLoggedIn && hasOrders) { %>

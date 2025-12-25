@@ -1,32 +1,36 @@
-/* HEADER */
+/* =====================================================
+   TOP HEADER
+   ===================================================== */
+
 .site-header {
   position: sticky;
   top: 0;
   width: 100vw;
-  background: #414664;
-  box-shadow: 1px 1px 10px #353434a7 ;
-  z-index: 1000;
   height: 5vh;
+  background: #414664;
   display: flex;
   align-items: center;
+  z-index: 1000;
+  box-shadow: 1px 1px 10px #353434a7;
 }
 
-.header-left{
-  margin-right: auto;
+/* Left: Brand */
+
+.header-left {
   margin-left: 4vw;
+  margin-right: auto;
 }
 
-/* BRAND */
 .brand-name {
   font-size: 20px;
   font-weight: 600;
+  letter-spacing: 0.5px;
   text-decoration: none;
   color: #f5f7f8;
-  letter-spacing: 0.5px;
-  
 }
 
-/* ICONS */
+/* Right: Icons */
+
 .header-right {
   display: flex;
   gap: 16px;
@@ -36,135 +40,17 @@
 .icon-btn {
   background: none;
   border: none;
-  cursor: pointer;
+  padding: 4px;
   font-size: 16px;
   color: #f5f7f8;
-  padding: 4px;
-}
-
-
-
-/* SIDE MENU */
-.side-menu {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: none; /* JS will toggle */
-  z-index: 1200;
-}
-
-.side-menu-inner {
-  width: 280px;
-  height: 100%;
-  background: #fff;
-  padding: 20px;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 20px;
   cursor: pointer;
-  margin-bottom: 20px;
-}
-
-/* SIDE NAV */
-.side-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.side-nav a {
-  text-decoration: none;
-  color: #111;
-  font-size: 16px;
 }
 
 
-/* BOTTOM NAV */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 64px;
-  background: #ffffff;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 1000;
-}
+/* =====================================================
+   SEARCH PANEL (SLIDE DOWN)
+   ===================================================== */
 
-/* ITEM */
-.bottom-nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #666;
-  font-size: 12px;
-}
-
-/* ICON */
-.bottom-nav-item i {
-  font-size: 20px;
-  margin-bottom: 4px;
-  color: #111;
-}
-
-/* LABEL */
-.bottom-nav-item span {
-  font-size: 14px;
-}
-
-
-/* LOWER HEADER */
-#lowerHeader {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 64px;
-  background: #ffffff;
-  border-top: 1px solid #f5f7f8;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* NAV ITEM */
-#lowerHeader .nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #ababab;
-  font-size: 11px;
-  transition: all 0.2s ease;
-}
-
-#lowerHeader .nav-item i {
-  font-size: 18px;
-  margin-bottom: 4px;
-}
-
-/* ACTIVE STATE */
-#lowerHeader .nav-item.active {
-  color: #414664;
-  gap: 2px;
-  transform: translateY(-4px);
-}
-
-#lowerHeader .nav-item.active i {
-  font-size: 20px;
-  color: #414664;
-}
-
-
-/* SEARCH PANEL */
 .search-panel {
   position: fixed;
   top: 5vh;
@@ -177,33 +63,30 @@
   z-index: 999;
 }
 
-/* OPEN STATE */
 .search-panel.open {
   transform: translateY(0);
 }
 
-/* INNER */
 .search-inner {
   display: flex;
   align-items: center;
-  padding: 14px 16px;
   gap: 12px;
+  padding: 1vh 3vw;
+  width: 94vw;
 }
 
-/* INPUT */
 .search-inner input {
   flex: 1;
-  font-size: 16px;
   padding: 8px 12px;
-  border: none;
-  background-color: #f3f3f3;
-  border-radius: 12px;
-  outline: none;
-  color: #4a3b2a;
+  font-size: 16px;
   font-family: var(--font-button);
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: #f3f3f3;
+  color: #4a3b2a;
 }
 
-/* CLOSE BUTTON */
 .search-close {
   background: none;
   border: none;
@@ -212,7 +95,53 @@
   color: #5f443a;
 }
 
-/* ASIDE MENU (MOBILE) */
+
+/* =====================================================
+   SIDE MENU (MODAL STYLE)
+   ===================================================== */
+
+.side-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none; /* toggled via JS */
+  z-index: 1200;
+}
+
+.side-menu-inner {
+  width: 280px;
+  height: 100%;
+  padding: 20px;
+  background: #ffffff;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Side Nav */
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.side-nav a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #111;
+}
+
+
+/* =====================================================
+   ASIDE MENU (SLIDE FROM RIGHT – MOBILE)
+   ===================================================== */
+
 .page-aside {
   position: fixed;
   top: 0;
@@ -222,16 +151,15 @@
   background: #ffffff;
   z-index: 1200;
   transition: right 0.5s ease;
-  box-shadow: -8px 0 20px rgba(0,0,0,0.15);
+  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ASIDE OPEN STATE */
 .page-aside.open {
   right: 0;
 }
 
-/* ASIDE CONTENT */
 .aside-inner {
+  position: relative;
   padding: 24px;
 }
 
@@ -247,16 +175,28 @@
 }
 
 .aside-nav a {
+  font-size: 16px;
   text-decoration: none;
   color: #111;
-  font-size: 16px;
 }
 
-/* OVERLAY (MOBILE) */
+.aside-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #111;
+}
+
+/* Overlay */
+
 .aside-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 1100;
   opacity: 0;
   pointer-events: none;
@@ -267,20 +207,93 @@
   opacity: 1;
   pointer-events: auto;
 }
-/* CLOSE BUTTON */
-.aside-close {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  color: #111;
+
+
+/* =====================================================
+   BOTTOM NAV (MOBILE)
+   ===================================================== */
+
+#lowerHeader {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6vh;
+  background: #ffffff;
+  border-top: 1px solid #f5f7f8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* ASIDE INNER POSITION FIX */
-.aside-inner {
-  position: relative;
-  padding: 24px;
+#lowerHeader .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: 6px;
+  font-size: 11px;
+  text-decoration: none;
+  color: #ababab;
+  transition: all 0.2s ease;
+}
+
+#lowerHeader .nav-item i {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+/* Active State */
+
+#lowerHeader .nav-item.active {
+  color: #414664;
+  transform: translateY(-4px);
+}
+
+#lowerHeader .nav-item.active i {
+  font-size: 20px;
+  color: #414664;
+}
+
+
+@media (min-width: 768px) {  
+.site-header{
+  height: 6vh;
+}
+.icon-btn{
+  font-size: 24px;
+}
+.header-right{
+  gap: 24px;
+  margin-right: 5vw;
+}
+.search-panel{
+  top: 6vh;
+}
+.search-inner{
+  padding: 2vh 5vw;
+  width: 90vw;
+}
+.search-inner input{
+  padding: 12px 22px;
+  font-size: 20px;
+}
+.search-close{
+  font-size: 24px;
+}
+#lowerHeader{
+  height: 6vh;
+}
+#lowerHeader .nav-item{
+  font-size: 18px;
+}
+#lowerHeader .nav-item i {
+  font-size: 24px;
+  
+}
+#lowerHeader .nav-item.active i {
+  font-size: 28px;
+  color: #414664;
+}
 }

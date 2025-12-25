@@ -302,6 +302,50 @@
   color: #555;
 }
 
+@media (min-width: 768px) { 
+  .hero-image {
+  width: 88vw;
+  margin-top: 5vw;
+  margin-left: 6vw;
+  border-radius: 20px;
+}
+#hero-badges{
+  padding-left: 6vw;
+}
+.badge-tile {
+  width: 82vw;
+  padding: 1.5vh 3vw;
+  border-radius: 20px;
+}
+.badge-content h3{
+  font-size: 32px;
+}
+.badge-content p{
+  font-size: 22px;
+  width: 60vw;
+}
+.brand {
+  margin-top: 8vh;
+}
+.brand-inner img {
+  width: 30vw;
+  aspect-ratio: 1327 / 2259;
+  object-fit: contain;
+}
+.brand h2{
+  font-size: 4vh;
+}
+.brand-content p{
+  font-size: 24px;
+}
+.brand-content .btn{
+  padding: 16px 32px;
+  font-size: 23px;
+}
+.process-content p{
+  font-size: 18px;
+}
+}
 /* =====================================================
    DESKTOP LAYOUT
    ===================================================== */
