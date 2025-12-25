@@ -7,6 +7,7 @@
   <title>Document</title>
 
    <%- include('../partials/link') %>
+   <link rel="stylesheet" href="/css/profile.css" />
    
 </head>
 
@@ -14,13 +15,25 @@
     <%- include('../partials/header') %>
 
     <% if (!isLoggedIn) { %>
-      <section class="profile-guest">
-        <h2>You are not logged in</h2>
-        <p>Please login to access your profile.</p>
+  <section class="profile-guest">
 
-        <a href="/login">Go to Login</a>
-      </section>
-    <% } %>
+    <div class="profile-visual">
+      <img src="assets/login.jpg" alt="Login required">
+    </div>
+
+    <div class="profile-content">
+      <h2>You are not logged in</h2>
+      <p>Please login to access your profile.</p>
+
+      <div class="profile-actions">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
+    </div>
+
+  </section>
+<% } %>
+
 
     <% if (isLoggedIn && userData) { %>
       <section class="profile-user">
