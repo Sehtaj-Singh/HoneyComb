@@ -169,7 +169,7 @@
   position: fixed;
   top: 5vh;
   left: 0;
-  width: 100%;
+  width: 100vw;
   background: #ffffff;
   border-bottom: 1px solid #eaeaea;
   transform: translateY(-100%);
