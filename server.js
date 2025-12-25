@@ -1,7 +1,7 @@
 //core module
 const path = require(`path`);
 const express = require(`express`);
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const { default: mongoose } = require("mongoose");
 
 // Load environment variables
@@ -21,14 +21,20 @@ const DB_PATH = process.env.DB_PATH;
 //local modules
 const rootDir = require("./utils/pathUtil");
 const storeRouter = require("./routers/storeRouter");
+const loginRouter = require("./routers/loginRouter");
+const userRouter = require("./routers/userRouter");
+
 
 //express functions
 const server = express();
 server.use(express.urlencoded());
 server.use(express.static(path.join(rootDir,`public`)));
+server.use(cookieParser()); // ✅ must come before routes for cookies
 
 //routers
 server.use(storeRouter);
+server.use(loginRouter);
+server.use(userRouter);
 
 // EJS
 server.set(`view engine`, `ejs`);

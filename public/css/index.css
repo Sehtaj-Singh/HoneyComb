@@ -151,7 +151,6 @@
 .product-image {
   width: 100%;
   aspect-ratio: 1 / 1;
-  background: #eaeaea;
 }
 .product-image img{
   width: 100%;
@@ -184,6 +183,25 @@
   font-weight: 600;
   color: #111;
 }
+
+/* PRODUCT CARD EXTRAS */
+.product-info .weight {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.product-info .discount {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: #e63946;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 
 
 /* PROCESS SECTION */
@@ -233,4 +251,49 @@
   font-size: 14px;
   line-height: 1.6;
   color: #555;
+}
+
+/* =========================
+   PAGE LAYOUT (MOBILE FIRST)
+   ========================= */
+
+.page {
+  position: relative;
+}
+
+/* MAIN CONTENT */
+.page-main {
+  width: 100%;
+}
+
+
+
+
+/* =========================
+   DESKTOP LAYOUT
+   ========================= */
+
+@media (min-width: 1024px) {
+
+  .page {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .page-main {
+    flex: 1;
+  }
+
+  .page-aside {
+    position: static;
+    width: 320px;
+    height: auto;
+    box-shadow: none;
+    transition: none;
+  }
+
+  .aside-overlay {
+    display: none;
+  }
+
 }

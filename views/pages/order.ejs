@@ -16,5 +16,37 @@
 </head>
 <body>
    <%- include('../partials/header') %>
+
+   <% if (!isLoggedIn) { %>
+      <section class="profile-guest">
+        <h2>You are not logged in</h2>
+        <p>Please login to access your profile.</p>
+
+        <a href="/login">Go to Login</a>
+      </section>
+      <% } %>
+
+      <% if (isLoggedIn && !hasOrders) { %>
+  <section class="orders-empty">
+    <h2>No orders yet</h2>
+    <p>You haven’t placed any orders.</p>
+    <a href="/store">Shop Now</a>
+  </section>
+<% } %>
+
+<% if (isLoggedIn && hasOrders) { %>
+  <section class="orders-list">
+    <h2>Your Orders</h2>
+
+    <% orders.forEach(order => { %>
+      <div class="order-card">
+        <p>Order ID: <%= order._id %></p>
+        <p>Items: <%= order.items.length %></p>
+      </div>
+    <% }) %>
+  </section>
+<% } %>
+      <%- include('../partials/burgerMenu') %>
+      <script src="/javascript/header.js"></script>
 </body>
 </html>

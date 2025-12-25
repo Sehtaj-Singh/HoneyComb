@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Font Awesome kit -->
+  <link rel="stylesheet" href="/icons/css/fontawesome.min.css">
+  <link rel="stylesheet" href="/icons/css/solid.min.css">
+  <link rel="stylesheet" href="/icons/css/brands.min.css">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/header.css" />
+</head>
+
+<body>
+
+  <%- include('../partials/header') %>
+
+    <section class="auth auth-register">
+      <h2>Create Account</h2>
+
+      <p>Register to access your profile and orders.</p>
+
+      <form id="registerForm" data-otp="register" method="POST" action="/register">
+
+        <div>
+          <label>Email</label>
+          <input type="email" name="email" required />
+        </div>
+
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" required />
+        </div>
+
+        <div>
+          <label>Confirm Password</label>
+          <input type="password" name="confirmPassword" required />
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="/login">Login here</a>
+      </p>
+    </section>
+    <!-- <%- include('../partials/otpModal') %> -->
+
+      <%- include('../partials/burgerMenu') %>
+        <script src="/javascript/header.js"></script>
+</body>
+
+</html>

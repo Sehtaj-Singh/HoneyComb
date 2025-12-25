@@ -1,0 +1,21 @@
+<div id="otpModal" class="otp-modal hidden">
+  <div class="otp-box">
+    <h3>Email Verification</h3>
+    <p>Enter the OTP sent to your email</p>
+
+    <input
+      type="text"
+      id="otpInput"
+      placeholder="Enter OTP"
+      maxlength="6"
+      autocomplete="one-time-code"
+    />
+
+    <div class="otp-actions">
+      <button type="button" id="verifyOtpBtn">Verify</button>
+      <button type="button" id="cancelOtpBtn">Cancel</button>
+    </div>
+
+    <p id="otpError" class="error hidden">Invalid or expired OTP</p>
+  </div>
+</div>

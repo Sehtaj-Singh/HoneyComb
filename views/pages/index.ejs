@@ -13,191 +13,115 @@
 
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/index.css" />
 
-</head>  
+</head>
 
 <body>
 
   <%- include('../partials/header') %>
+  
+    <div class="page">
+      <main id="hero">
+        <a href="#" class="hero-image">
+          <img src="assets/hero.png" alt="Honeycomb Hero">
+        </a>
 
-    <main id="hero">
-      <a href="#" class="hero-image">
-        <img src="assets/hero.png" alt="Honeycomb Hero">
+        <!-- HERO BADGES -->
+        <section id="hero-badges">
+
+          <h1>We Offer</h1>
+
+          <!-- TILE 1 -->
+          <div class="badge-tile">
+            <div class="badge-icon">
+              <img src="assets/badge1.png" alt="Pure Honey">
+            </div>
+            <div class="badge-content">
+              <h3>Pure Honey</h3>
+              <p>Unprocessed and naturally filtered honey, retaining its original enzymes and nutrients.</p>
+            </div>
+          </div>
+
+          <!-- TILE 2 -->
+          <div class="badge-tile">
+            <div class="badge-icon">
+              <img src="assets/badge2.jpg" alt="Floral Taste">
+            </div>
+            <div class="badge-content">
+              <h3>Floral Taste</h3>
+              <p>Delicately flavored honey sourced from diverse blossoms with a naturally smooth finish.</p>
+            </div>
+          </div>
+
+          <!-- TILE 3 -->
+          <div class="badge-tile">
+            <div class="badge-icon">
+              <img src="assets/badge3.jpg" alt="Ethical Harvest">
+            </div>
+            <div class="badge-content">
+              <h3>Ethical Harvest</h3>
+              <p>Responsibly collected using bee-friendly practices that respect nature and sustainability.</p>
+            </div>
+          </div>
+
+
+        </section>
+
+        <section class="brand">
+          <div class="brand-inner">
+            <img src="assets/brand11.png" alt="Honeycomb Brand">
+
+            <div class="brand-content">
+              <h2>From the Hive to Your Homee</h2>
+              <p>
+                Every jar of Honeycomb reflects our commitment to natural sourcing, ethical harvesting, and honest
+                craftsmanship. We work closely with beekeepers to bring you honey that’s pure, traceable, and full of
+                character.
+              </p>
+              <a href="/about" class="btn">Our Process</a>
+            </div>
+          </div>
+          <div class="brand-down">
+            <img src="assets/brand-down.jpg">
+          </div>
+        </section>
+
+        <section class="products">
+  <h2 class="products-title">Our Honey Products</h2>
+
+  <div class="products-grid">
+
+    <% if (products.length === 0) { %>
+      <p>No products available</p>
+    <% } %>
+
+    <% products.forEach(product => { %>
+      <a href="/product/<%= product._id %>" class="product-card">
+
+        <div class="product-image">
+          <img src="/assets/product.webp" alt="<%= product.name %>">
+        </div>
+
+        <div class="product-info">
+          <h3><%= product.name %></h3>
+          <p class="weight"><%= product.weight %></p>
+
+          <div class="product-price">
+            <% if (product.discount > 0) { %>
+              <span class="mrp">₹<%= product.mrp %></span>
+            <% } %>
+            <span class="price">₹<%= product.price %></span>
+          </div>
+
+          <% if (product.discount > 0) { %>
+            <span class="discount"><%= product.discount %>% OFF</span>
+          <% } %>
+        </div>
+
       </a>
-
-      <!-- HERO BADGES -->
-      <section id="hero-badges">
-
-        <h1>We Offer</h1>
-
-        <!-- TILE 1 -->
-        <div class="badge-tile">
-          <div class="badge-icon">
-            <img src="assets/badge1.png" alt="Pure Honey">
-          </div>
-          <div class="badge-content">
-            <h3>Pure Honey</h3>
-            <p>Unprocessed and naturally filtered honey, retaining its original enzymes and nutrients.</p>
-          </div>
-        </div>
-
-        <!-- TILE 2 -->
-        <div class="badge-tile">
-          <div class="badge-icon">
-            <img src="assets/badge2.jpg" alt="Floral Taste">
-          </div>
-          <div class="badge-content">
-            <h3>Floral Taste</h3>
-            <p>Delicately flavored honey sourced from diverse blossoms with a naturally smooth finish.</p>
-          </div>
-        </div>
-
-        <!-- TILE 3 -->
-        <div class="badge-tile">
-          <div class="badge-icon">
-            <img src="assets/badge3.jpg" alt="Ethical Harvest">
-          </div>
-          <div class="badge-content">
-            <h3>Ethical Harvest</h3>
-            <p>Responsibly collected using bee-friendly practices that respect nature and sustainability.</p>
-          </div>
-        </div>
-
-
-      </section>
-
-      <section class="brand">
-        <div class="brand-inner">
-          <img src="assets/brand11.png" alt="Honeycomb Brand">
-
-          <div class="brand-content">
-            <h2>From the Hive to Your Homee</h2>
-            <p>
-              Every jar of Honeycomb reflects our commitment to natural sourcing, ethical harvesting, and honest
-              craftsmanship. We work closely with beekeepers to bring you honey that’s pure, traceable, and full of
-              character.
-            </p>
-            <a href="/about" class="btn">Our Process</a>
-          </div>
-        </div>
-        <div class="brand-down">
-          <img src="assets/brand-down.jpg">
-        </div>
-      </section>
-
-      <section class="products">
-        <h2 class="products-title">Our Products</h2>
-
-        <div class="products-grid">
-
-          <!-- PRODUCT CARD -->
-          <a href="/product/forest-honey" class="product-card">
-            <div class="product-image">
-              <img src="assets/product.webp">
-            </div>
-
-            <div class="product-info">
-              <h3>Forest Honey</h3>
-              <div class="product-price">
-                <span class="mrp">₹599</span>
-                <span class="price">₹449</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- PRODUCT CARD -->
-          <a href="/product/creamed-honey" class="product-card">
-            <div class="product-image">
-              <img src="assets/product.webp">
-            </div>
-
-            <div class="product-info">
-              <h3>Creamed Honey</h3>
-              <div class="product-price">
-                <span class="mrp">₹549</span>
-                <span class="price">₹399</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- PRODUCT CARD -->
-          <a href="/product/meadow-honey" class="product-card">
-            <div class="product-image">
-              <img src="assets/product.webp">
-            </div>
-
-            <div class="product-info">
-              <h3>Meadow Honey</h3>
-              <div class="product-price">
-                <span class="mrp">₹499</span>
-                <span class="price">₹369</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- OPTIONAL 4th CARD -->
-          <a href="/product/raw-honey" class="product-card">
-            <div class="product-image">
-              <img src="assets/product.webp">
-            </div>
-
-            <div class="product-info">
-              <h3>Raw Honey</h3>
-              <div class="product-price">
-                <span class="mrp">₹649</span>
-                <span class="price">₹499</span>
-              </div>
-            </div>
-          </a>
-
-        </div>
-      </section>
-
-      <section class="process">
-  <h2 class="process-title">Our Process</h2>
-
-  <div class="process-list">
-
-    <div class="process-card">
-      <div class="process-image">
-        <img src="assets/process1.jpg" alt="Ethical Sourcing">
-      </div>
-      <div class="process-content">
-        <h3>Ethical Sourcing</h3>
-        <p>
-          We work closely with responsible beekeepers who follow sustainable,
-          bee-friendly harvesting practices.
-        </p>
-      </div>
-    </div>
-
-    <div class="process-card">
-      <div class="process-image">
-        <img src="assets/process2.jpg" alt="Minimal Processing">
-      </div>
-      <div class="process-content">
-        <h3>Minimal Processing</h3>
-        <p>
-          Honey is gently filtered and handled with care to preserve its natural
-          enzymes, texture, and flavor.
-        </p>
-      </div>
-    </div>
-
-    <div class="process-card">
-      <div class="process-image">
-        <img src="assets/process3.jpg" alt="Careful Packaging">
-      </div>
-      <div class="process-content">
-        <h3>Careful Packaging</h3>
-        <p>
-          Each jar is thoughtfully packed to ensure freshness, quality,
-          and a premium experience when it reaches you.
-        </p>
-      </div>
-    </div>
+    <% }) %>
 
   </div>
 </section>
@@ -205,9 +129,63 @@
 
 
 
+        <section class="process">
+          <h2 class="process-title">Our Process</h2>
+
+          <div class="process-list">
+
+            <div class="process-card">
+              <div class="process-image">
+                <img src="assets/process1.jpg" alt="Ethical Sourcing">
+              </div>
+              <div class="process-content">
+                <h3>Ethical Sourcing</h3>
+                <p>
+                  We work closely with responsible beekeepers who follow sustainable,
+                  bee-friendly harvesting practices.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-image">
+                <img src="assets/process2.jpg" alt="Minimal Processing">
+              </div>
+              <div class="process-content">
+                <h3>Minimal Processing</h3>
+                <p>
+                  Honey is gently filtered and handled with care to preserve its natural
+                  enzymes, texture, and flavor.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-image">
+                <img src="assets/process3.jpg" alt="Careful Packaging">
+              </div>
+              <div class="process-content">
+                <h3>Careful Packaging</h3>
+                <p>
+                  Each jar is thoughtfully packed to ensure freshness, quality,
+                  and a premium experience when it reaches you.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
 
 
-    </main>
+
+
+
+
+      </main>
+      <%- include('../partials/burgerMenu') %>
+     
+    </div>
+    <script src="/javascript/header.js"></script>
 
 </body>
 
