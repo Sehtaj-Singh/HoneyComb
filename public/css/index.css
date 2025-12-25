@@ -1,9 +1,12 @@
 /* HERO IMAGE */
 .hero-image {
   display: block;
-  width: 100vw;
+  width: 94vw;
+  margin-top: 3vw;
   background: url("/assets/hero.png")center/cover no-repeat;
   aspect-ratio: 1536/1024;
+  margin-left: 3vw;
+  border-radius: 14px;
 }
 
 
@@ -18,9 +21,10 @@
 }
 
 #hero-badges h1 {
-  font-size: 3.3vh;
+  font-size: 3.5vh;
   text-align: center;
   letter-spacing: 3px;
+  font-family: 600;
   color: #414664;
   font-family: var(--font-title);
 }
@@ -29,32 +33,34 @@
 .badge-tile {
   display: flex;
   align-items: center;
-  gap: 7vw;
+  gap: 5vw;
   border-radius: 12px;
   background-color: #f5f7f8;
   padding: 1.5vh 3vw;
 }
 
 /* ICON PLACEHOLDER */
-
-
-.badge-icon img {
-  width: 15vw;
-}
-
 /* CONTENT */
 .brand{
   margin-top: 2vh;
 }
+
+.badge-icon{
+  width: 15vw;
+  margin-right: auto;
+}
+
 .badge-content h3 {
   font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
   font-family: var(--font-subtitle);
   margin-bottom: 6px;
   color: #5f443a;
 }
 
 .badge-content p {
-  font-size: 14px;
+  font-size: 13px;
   color: #555;
   font-family: var(--font-body);
   line-height: 1.4;
@@ -79,6 +85,7 @@
   margin-left: 2.5vw;
   
 }
+
 .brand-content h2 {
   font-size: 28px;
   font-family: var(--font-subtitle);
