@@ -1,51 +1,62 @@
-/* HERO IMAGE */
+/* =====================================================
+   PAGE LAYOUT (MOBILE FIRST)
+   ===================================================== */
+
+.page {
+  position: relative;
+}
+
+.page-main {
+  width: 100%;
+}
+
+/* =====================================================
+   HERO IMAGE
+   ===================================================== */
+
 .hero-image {
   display: block;
   width: 94vw;
   margin-top: 3vw;
-  background: url("/assets/hero.png")center/cover no-repeat;
-  aspect-ratio: 1536/1024;
   margin-left: 3vw;
+  aspect-ratio: 1536 / 1024;
+  background: url("/assets/hero.png") center / cover no-repeat;
   border-radius: 14px;
 }
 
+/* =====================================================
+   HERO BADGES (WE OFFER)
+   ===================================================== */
 
-
-/* HERO BADGES */
 #hero-badges {
-  padding: 20px 20px;
-  background: #fff;
+  margin-top: 3vh;
+  padding-left: 3vw;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 1.5vh;
+  gap: 2.5vh;
 }
 
 #hero-badges h1 {
   font-size: 3.5vh;
-  text-align: center;
   letter-spacing: 3px;
-  font-family: 600;
+  text-align: center;
   color: #414664;
   font-family: var(--font-title);
 }
 
-/* BADGE TILE */
+/* Badge Tile */
+
 .badge-tile {
   display: flex;
   align-items: center;
-  gap: 5vw;
+  width: 88vw;
+  padding: 1.5vh 3vw;
   border-radius: 12px;
   background-color: #f5f7f8;
-  padding: 1.5vh 3vw;
 }
 
-/* ICON PLACEHOLDER */
-/* CONTENT */
-.brand{
-  margin-top: 2vh;
-}
-
-.badge-icon{
+.badge-icon {
   width: 15vw;
   margin-right: auto;
 }
@@ -61,77 +72,81 @@
 
 .badge-content p {
   font-size: 13px;
-  color: #555;
   font-family: var(--font-body);
   line-height: 1.4;
-  width: 60vw;
+  color: #555;
+  width: 65vw;
 }
 
-.brand-inner img {
-  width: 35vw;
-  object-fit: contain;
-  aspect-ratio: 1559/2198;
+/* =====================================================
+   BRAND / STORY SECTION
+   ===================================================== */
+
+.brand {
+  margin-top: 5vh;
 }
 
 .brand-inner {
   display: flex;
+  margin-bottom: 6vh;
+}
+
+.brand-inner img {
+  width: 35vw;
+  aspect-ratio: 1327 / 2259;
+  object-fit: contain;
 }
 
 .brand-content {
   width: 60vw;
+  margin-left: 2.5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 2.5vw;
-  
+  justify-content: space-around;
 }
 
-.brand-content h2 {
-  font-size: 28px;
+.brand h2 {
+  width: 60vw;
+  margin-left: 20vw;
+  margin-bottom: 3vh;
+  font-size: 3.5vh;
   font-family: var(--font-subtitle);
   font-weight: 600;
-  margin-bottom: 16px;
   text-align: center;
   color: #5f443a;
 }
 
 .brand-content p {
-  font-size: 16px;
-  line-height: 1.2;
-  color: #555;
-  text-align: center;
-  font-family: var(--font-body);
-  margin-bottom: 24px;
   max-width: 520px;
-  text-align: justify;
+  margin-bottom: 24px;
+  font-size: 15px;
+  font-family: var(--font-body);
   line-height: 1.6;
-
-  /* Improves spacing */
+  color: #555;
+  text-align: justify;
   hyphens: auto;
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
-
-  /* Better word flow */
   word-spacing: 0.02em;
 }
 
 .brand-content .btn {
   display: inline-block;
   padding: 12px 24px;
+  margin-bottom: 1vh;
   font-size: 14px;
   font-weight: 500;
-  text-decoration: none;
-  color: #fff;
   font-family: var(--font-button);
-background: linear-gradient(
-  135deg,
-  #F2C14E 0%,
-  #D89A2B 45%,
-  #B77F1F 100%
-);
-
-
+  color: #ffffff;
+  text-decoration: none;
   border-radius: 6px;
+  background: linear-gradient(
+    135deg,
+    #f2c14e 0%,
+    #d89a2b 45%,
+    #b77f1f 100%
+  );
   transition: background-color 0.2s ease;
 }
 
@@ -139,18 +154,21 @@ background: linear-gradient(
   background-color: #e0a800;
 }
 
-.brand-down{
+.brand-down {
   width: 90vw;
   margin-left: 5vw;
   margin-top: 3vh;
 }
-.brand-down img{
+
+.brand-down img {
   width: 100%;
   height: auto;
 }
 
+/* =====================================================
+   PRODUCTS SECTION
+   ===================================================== */
 
-/* PRODUCTS SECTION */
 .products {
   padding: 64px 20px;
   background: #ffffff;
@@ -161,32 +179,32 @@ background: linear-gradient(
   margin-bottom: 32px;
 }
 
-/* GRID */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
 }
 
-/* CARD */
+/* Product Card */
+
 .product-card {
   display: block;
-  text-decoration: none;
-  color: inherit;
+  background: #fafafa;
   border-radius: 12px;
   overflow: hidden;
-  background: #fafafa;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* IMAGE PLACEHOLDER */
 .product-image {
   width: 100%;
   aspect-ratio: 1 / 1;
 }
-.product-image img{
+
+.product-image img {
   width: 100%;
 }
-/* INFO */
+
 .product-info {
   padding: 14px;
 }
@@ -196,11 +214,16 @@ background: linear-gradient(
   margin-bottom: 8px;
 }
 
-/* PRICE */
+.product-info .weight {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
 .product-price {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 }
 
 .product-price .mrp {
@@ -215,67 +238,55 @@ background: linear-gradient(
   color: #111;
 }
 
-/* PRODUCT CARD EXTRAS */
-.product-info .weight {
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 6px;
-}
-
 .product-info .discount {
   display: inline-block;
   margin-top: 6px;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
+  color: #ffffff;
   background: #e63946;
-  padding: 4px 8px;
   border-radius: 4px;
 }
 
+/* =====================================================
+   PROCESS SECTION
+   ===================================================== */
 
-
-/* PROCESS SECTION */
 .process {
   padding: 64px 20px;
   background: #ffffff;
 }
 
 .process-title {
-  font-size: 3.3vh;
+  font-size: 3.5vh;
   font-family: var(--font-title);
-  margin-bottom: 40px;
-  text-align: center;
-  color: #414664;
   letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #414664;
 }
 
-/* LIST */
 .process-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 32px;
 }
 
-/* CARD */
 .process-card {
   background: #f9f9f9;
   border-radius: 14px;
-  overflow: hidden; /* ensures image has no padding */
+  overflow: hidden;
 }
 
-/* IMAGE */
 .process-image img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
-/* CONTENT */
 .process-content {
   padding: 20px;
 }
-
 
 .process-content h3 {
   font-size: 2.5vh;
@@ -286,31 +297,14 @@ background: linear-gradient(
 
 .process-content p {
   font-size: 14px;
-  color: #555;
   font-family: var(--font-body);
   line-height: 1.6;
   color: #555;
 }
 
-/* =========================
-   PAGE LAYOUT (MOBILE FIRST)
-   ========================= */
-
-.page {
-  position: relative;
-}
-
-/* MAIN CONTENT */
-.page-main {
-  width: 100%;
-}
-
-
-
-
-/* =========================
+/* =====================================================
    DESKTOP LAYOUT
-   ========================= */
+   ===================================================== */
 
 @media (min-width: 1024px) {
 
@@ -334,5 +328,4 @@ background: linear-gradient(
   .aside-overlay {
     display: none;
   }
-
 }
