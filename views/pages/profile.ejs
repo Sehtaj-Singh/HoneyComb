@@ -15,17 +15,17 @@
     <%- include('../partials/header') %>
 
     <% if (!isLoggedIn) { %>
-  <section class="profile-guest">
+  <section class="empty-state">
 
-    <div class="profile-visual">
+    <div class="empty-state__visual">
       <img src="assets/login.jpg" alt="Login required">
     </div>
 
-    <div class="profile-content">
+    <div class="empty-state__content">
       <h2>You are not logged in</h2>
       <p>Please login to access your profile.</p>
 
-      <div class="profile-actions">
+      <div class="empty-state__actions">
         <a href="/login">Login</a>
         <a href="/register">Register</a>
       </div>

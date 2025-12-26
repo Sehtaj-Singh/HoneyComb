@@ -5,47 +5,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <!-- Font Awesome kit -->
-  <link rel="stylesheet" href="/icons/css/fontawesome.min.css">
-  <link rel="stylesheet" href="/icons/css/solid.min.css">
-  <link rel="stylesheet" href="/icons/css/brands.min.css">
 
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/header.css" />
+   <%- include('../partials/link') %>
+    <link rel="stylesheet" href="/css/order.css" />
 </head>
 
 <body>
   <%- include('../partials/header') %>
 
-    <section class="cart-page">
-      <h2>Your Cart</h2>
+<% if (!isLoggedIn) { %>
 
-      <% if (cart.length===0) { %>
-        <p>Your cart is empty</p>
-        <a href="/">Continue Shopping</a>
-        <% } %>
+  <!-- STATE 1: NOT LOGGED IN -->
+  <section class="empty-state cart-guest">
+    <div class="empty-state__visual">
+      <img src="assets/login.jpg" alt="Login required">
+    </div>
 
-          <% if (cart.length> 0) { %>
-            <% cart.forEach(item=> { %>
-              <div class="cart-item">
-                <p>
-                  <%= item.name %> (<%= item.weight %>)
-                </p>
-                <p>₹<%= item.price %> × <%= item.quantity %>
-                </p>
+    <div class="empty-state__content">
+      <h2>You are not logged in</h2>
+      <p>Please login to see your cart.</p>
 
-                <form action="/cart/remove" method="POST">
-                  <input type="hidden" name="productId" value="<%= item.productId %>">
-                  <button type="submit">Remove</button>
-                </form>
-              </div>
-              <% }) %>
-                <% } %>
-    </section>
+      <div class="empty-state__actions">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
+    </div>
+  </section>
 
-    <%- include('../partials/burgerMenu') %>
-      <script src="/javascript/header.js"></script>
+<% } else if (!hasItems) { %>
+
+  <!-- STATE 2: LOGGED IN, EMPTY CART -->
+  <section class="empty-state cart-empty">
+    <div class="empty-state__visual">
+      <img src="assets/empty-cart.jpg" alt="Empty cart">
+    </div>
+
+    <div class="empty-state__content">
+      <h2>Your cart is empty</h2>
+      <p>Add items to your cart to continue shopping.</p>
+
+      <div class="empty-state__actions">
+        <a href="/store">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+<% } else { %>
+
+  <!-- STATE 3: LOGGED IN, CART HAS ITEMS -->
+  <section class="cart-page">
+    <h2>Your Cart</h2>
+
+    <% cart.forEach(item => { %>
+      <div class="cart-item">
+        <p><%= item.name %> (<%= item.weight %>)</p>
+        <p>₹<%= item.price %> × <%= item.quantity %></p>
+
+        <form action="/cart/remove" method="POST">
+          <input type="hidden" name="productId" value="<%= item.productId %>">
+          <button type="submit">Remove</button>
+        </form>
+      </div>
+    <% }) %>
+  </section>
+
+<% } %>
+
+<%- include('../partials/burgerMenu') %>
+<script src="/javascript/header.js"></script>
+
 </body>
 
 </html>

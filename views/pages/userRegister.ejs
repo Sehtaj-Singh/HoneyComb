@@ -5,49 +5,74 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  
-   <%- include('../partials/link') %>
-   
+
+  <%- include('../partials/link') %>
+    <link rel="stylesheet" href="/css/register.css">
+
+
 </head>
 
 <body>
 
-  <%- include('../partials/header') %>
 
-    <section class="auth auth-register">
-      <h2>Create Account</h2>
 
-      <p>Register to access your profile and orders.</p>
+  <section class="auth-register">
 
-      <form id="registerForm" data-otp="register" method="POST" action="/register">
+    <div class="register-image">
+      <div class="image-inner">
+       <h2>Welcome to HoneyComb</h2>
+      <p>Create your account and get started</p>
+      </div>
+      
+    </div>
 
-        <div>
-          <label>Email</label>
-          <input type="email" name="email" required />
+
+    <form id="registerForm" data-otp="register" method="POST" action="/register">
+      <h2 id="title" >Register</h2>
+      <!-- Full Name -->
+        <input type="text" name="name" class="input" placeholder="Full name" required />
+
+      <!-- Email -->
+      
+        <input type="email" name="email" class="input" placeholder="Email address" required />
+      
+
+      <!-- Phone -->
+      <div class="field phone-field">
+        <div class="phone-input">
+          <span class="country-code">+91</span>
+          <input type="tel" name="phone" class="input" placeholder="Phone number" maxlength="10" pattern="[0-9]{10}"
+            required />
         </div>
+      </div>
 
-        <div>
-          <label>Password</label>
-          <input type="password" name="password" required />
-        </div>
+      <!-- Password -->
+      
+        <input type="password" name="password" class="input" placeholder="Password" required />
+      
 
-        <div>
-          <label>Confirm Password</label>
-          <input type="password" name="confirmPassword" required />
-        </div>
+      <!-- Confirm Password -->
+      
+        <input type="password" name="confirmPassword" class="input" placeholder="Confirm password" required />
+      
 
-        <button type="submit">Register</button>
-      </form>
+      <button type="submit" class="auth-btn">
+        Create Account
+      </button>
 
       <p class="auth-switch">
-        Already have an account?
-        <a href="/login">Login here</a>
-      </p>
-    </section>
-    <!-- <%- include('../partials/otpModal') %> -->
+      Already have an account?
+      <a href="/login">Login </a>
+    </p>
 
-      <%- include('../partials/burgerMenu') %>
-        <script src="/javascript/header.js"></script>
+
+    </form>
+
+    
+  </section>
+
+
+
 </body>
 
 </html>

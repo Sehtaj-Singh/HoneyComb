@@ -129,11 +129,14 @@ exports.getProfile = async (req, res) => {
 exports.getCart = (req, res) => {
   const cart = req.session.cart || [];
 
-  res.render("pages/cart", {
+  return res.render("pages/cart", {
     active: "cart",
-    cart
+    cart,
+    isLoggedIn: res.locals.isLoggedIn,
+    hasItems: cart.length > 0
   });
 };
+
 
 // --------------------
 // ADD TO CART
