@@ -20,55 +20,50 @@
 
     <div class="register-image">
       <div class="image-inner">
-       <h2>Welcome to HoneyComb</h2>
-      <p>Create your account and get started</p>
+        <h2>Welcome to HoneyComb</h2>
+        <p>Create your account and get started</p>
       </div>
-      
+
     </div>
 
 
     <form id="registerForm" data-otp="register" method="POST" action="/register">
-      <h2 id="title" >Register</h2>
+      <h2 id="title">Register</h2>
       <!-- Full Name -->
-        <input type="text" name="name" class="input" placeholder="Full name" required />
+      <input type="text" name="name" class="input" placeholder="Full name" required />
 
       <!-- Email -->
-      
-        <input type="email" name="email" class="input" placeholder="Email address" required />
-      
+
+      <input type="email" name="email" class="input" placeholder="Email address" required />
+
 
       <!-- Phone -->
-      <div class="field phone-field">
+      
         <div class="phone-input">
           <span class="country-code">+91</span>
-          <input type="tel" name="phone" class="input" placeholder="Phone number" maxlength="10" pattern="[0-9]{10}"
-            required />
+          <input type="tel" name="phone" class=" phone-number" placeholder="Phone number" maxlength="10"
+            pattern="[0-9]{10}" required />
         </div>
-      </div>
+     
+
 
       <!-- Password -->
-      
-        <input type="password" name="password" class="input" placeholder="Password" required />
-      
 
-      <!-- Confirm Password -->
-      
-        <input type="password" name="confirmPassword" class="input" placeholder="Confirm password" required />
-      
+      <input type="password" name="password" class="input" placeholder="Password" required />
 
       <button type="submit" class="auth-btn">
         Create Account
       </button>
 
       <p class="auth-switch">
-      Already have an account?
-      <a href="/login">Login </a>
-    </p>
+        Already have an account?
+        <a href="/login">Login </a>
+      </p>
 
 
     </form>
 
-    
+
   </section>
 
 
