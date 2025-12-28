@@ -13,6 +13,23 @@
   background: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
+
+.login-image{
+  background: url("/assets/login-top.jpg")center/cover no-repeat;
+  width: 100vw;
+  position: relative;
+  aspect-ratio: 2601/1793;
+  box-shadow: 1px 1px 10px #424141c9;
+}
+/* black overlay */
+.login-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
 .image-inner{
   position: absolute;
   z-index: 3;
@@ -50,8 +67,16 @@ margin-bottom: 3vh;
   margin-top:2vh ;
 }
 
+#loginForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:2vh ;
+}
 
-
+.btn-login{
+  
+}
 
 /* INPUTS */
 .input {
@@ -78,11 +103,9 @@ margin-bottom: 3vh;
   box-shadow: 5.5px 7px 0 #5f443a;
 }
 
-
-
 /* BUTTON */
 .auth-btn {
-  margin-top: 10px;
+  margin-top: 17px;
   padding: 14px;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
@@ -95,7 +118,7 @@ margin-bottom: 3vh;
 
 /* LOGIN SWITCH */
 .auth-switch {
-  margin-top: 14px;
+  margin-top: 20px;
   font-family: 'Inika', serif;
   color: #5f443a;
   font-size: 17px;
@@ -121,9 +144,10 @@ margin-bottom: 3vh;
 
 /* +91 inside input */
 .country-code {
-  padding: 2vh 3vw;
+  padding: 1.8vh 3vw;
   font-family: 'Inter', sans-serif;
   width: 6vw;
+  font-size: 1.8vh;
   color: #414664;
   pointer-events: none;
   transform: translatex(12vw);

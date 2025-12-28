@@ -93,23 +93,24 @@ exports.getOrders = async (req, res) => {
 
 exports.getProfile = async (req, res) => {
   try {
-    // 🔒 login state already decided by middleware
     if (!res.locals.isLoggedIn) {
       return res.render("pages/profile", {
         active: "profile",
-        userData: null
+        isLoggedIn: false,
+        userData: null,
+        address: null
       });
     }
 
-    // 🔑 user identity from middleware
     const firebaseUid = res.locals.user.uid;
 
-    // 📦 fetch user profile from DB
     const userData = await UserDB.findOne({ uid: firebaseUid });
 
     return res.render("pages/profile", {
       active: "profile",
-      userData
+      isLoggedIn: true,
+      userData,
+      address: userData?.address || null
     });
 
   } catch (err) {
@@ -117,7 +118,9 @@ exports.getProfile = async (req, res) => {
 
     return res.render("pages/profile", {
       active: "profile",
-      userData: null
+      isLoggedIn: false,
+      userData: null,
+      address: null
     });
   }
 };

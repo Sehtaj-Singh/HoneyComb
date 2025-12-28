@@ -35,15 +35,64 @@
 <% } %>
 
 
-    <% if (isLoggedIn && userData) { %>
-      <section class="profile-user">
-         <h2>My Profile</h2>
+   <% if (isLoggedIn && userData) { %>
 
-         <p><strong>Email:</strong> <%= userData.email %></p>
-         <p><strong>Name:</strong> <%= userData.name || "—" %></p>
-         <p><strong>Phone:</strong> <%= userData.phone || "—" %></p>
-      </section>
+<section class="profile-page">
+
+  <!-- PROFILE HEADER -->
+  <div class="profile-card">
+    <div class="profile-avatar">
+      <span><%= userData.name.charAt(0).toUpperCase() %></span>
+    </div>
+
+    <div class="profile-info">
+      <h2>My Profile</h2>
+      <p class="profile-name"><%= userData.name %></p>
+      <p class="profile-email"><%= userData.email %></p>
+      <p class="profile-phone">
+        Phone: <%= userData.phone || "Not added" %>
+      </p>
+    </div>
+  </div>
+
+  <!-- ADDRESS -->
+  <div class="profile-section">
+    <h3>Address</h3>
+
+    <% if (address) { %>
+      <p class="address-name"><%= address.fullName %></p>
+      <p class="address-text">
+        <%= address.flat %>, <%= address.area %>,
+        <%= address.city %>, <%= address.state %> - <%= address.pincode %>
+      </p>
+
+      <% if (address.landmark) { %>
+        <p class="address-landmark">Landmark: <%= address.landmark %></p>
+      <% } %>
+
+      <a href="/profile/address" class="link-btn">Change address</a>
+    <% } else { %>
+      <p class="address-empty">No address added</p>
+      <a href="/profile/address" class="link-btn">Add address</a>
     <% } %>
+  </div>
+
+  <!-- ACCOUNT LINKS -->
+  <div class="profile-section">
+    <h3>Account</h3>
+
+    <ul class="profile-links">
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms & Conditions</a></li>
+      <li><a href="/support">Help & Support</a></li>
+      <li class="logout"><a href="/logout">Logout</a></li>
+    </ul>
+  </div>
+
+</section>
+
+<% } %>
+
 
 
       
