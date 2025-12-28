@@ -1,15 +1,6 @@
-/* =====================================================
-   PAGE LAYOUT (MOBILE FIRST)
-   ===================================================== */
-
-.page {
-  position: relative;
+body{
+  padding-bottom: 7vh;
 }
-
-.page-main {
-  width: 100%;
-}
-
 /* =====================================================
    HERO IMAGE
    ===================================================== */
@@ -107,8 +98,8 @@
 }
 
 .brand h2 {
-  width: 70vw;
-  margin-left: 15vw;
+  width: 80vw;
+  margin-left: 10vw;
   letter-spacing: 2px;
   margin-bottom: 3vh;
   font-size: 4vh;
@@ -176,7 +167,8 @@
 }
 
 .products-title {
-  font-size: 4.5vh;
+  font-size: 4vh;
+  letter-spacing: 2px;
   color: #414664;
   text-align: center;
   margin-bottom: 32px;
@@ -332,7 +324,7 @@ product stars
 }
 
 .process-title {
-  font-size: 3.5vh;
+  font-size: 4vh;
   font-family: var(--font-title);
   letter-spacing: 3px;
   text-align: center;
@@ -379,8 +371,7 @@ product stars
 Order */
 
 .bulk-section {
-  padding: 60px 20px;
-  background: #f5f7f8;
+  padding: 20px 20px;
 }
 
 .bulk-inner {

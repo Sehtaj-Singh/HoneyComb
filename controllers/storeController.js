@@ -5,32 +5,27 @@ const ProductDB = require("../models/productDB");
 
 exports.getIndex = async (req, res) => {
   try {
-    const products = await ProductDB
-      .find({ isActive: true })
-      .limit(3);
+    const products = await ProductDB.find({ isActive: true }).limit(3);
 
     return res.render("pages/index", {
       active: "home",
-      products
+      products,
+      isDetailPage: null,
     });
-
   } catch (error) {
     console.error("Index page error:", error);
 
     // IMPORTANT: render page safely, not crash
     return res.render("pages/index", {
       active: "home",
-      products: []
+      products: [],
     });
   }
 };
 
-
 exports.getStore = (req, res) => {
-  res.render('pages/store', { active: 'store' });
+  res.render("pages/store", { active: "store", isDetailPage: null });
 };
-
-
 
 exports.getProductDetail = async (req, res) => {
   try {
@@ -42,18 +37,14 @@ exports.getProductDetail = async (req, res) => {
 
     return res.render("pages/productDetail", {
       active: "store",
-      product
+      product,
+      isDetailPage: null,
     });
-
   } catch (error) {
     console.error("Product detail error:", error);
     return res.status(404).render("pages/404");
   }
 };
-
-
-
-
 
 exports.getOrders = async (req, res) => {
   try {
@@ -62,7 +53,8 @@ exports.getOrders = async (req, res) => {
       return res.render("pages/order", {
         active: "orders",
         orders: [],
-        hasOrders: false
+        hasOrders: false,
+        isDetailPage: null,
       });
     }
 
@@ -75,21 +67,19 @@ exports.getOrders = async (req, res) => {
     return res.render("pages/order", {
       active: "orders",
       orders,
-      hasOrders: orders.length > 0
+      hasOrders: orders.length > 0,
     });
-
   } catch (err) {
     console.error("Orders error:", err);
 
     return res.render("pages/order", {
       active: "orders",
       orders: [],
-      hasOrders: false
+      hasOrders: false,
+      isDetailPage: null,
     });
   }
 };
-
-
 
 exports.getProfile = async (req, res) => {
   try {
@@ -98,7 +88,8 @@ exports.getProfile = async (req, res) => {
         active: "profile",
         isLoggedIn: false,
         userData: null,
-        address: null
+        address: null,
+        isDetailPage: null,
       });
     }
 
@@ -110,9 +101,8 @@ exports.getProfile = async (req, res) => {
       active: "profile",
       isLoggedIn: true,
       userData,
-      address: userData?.address || null
+      address: userData?.address || null,
     });
-
   } catch (err) {
     console.error("Profile error:", err);
 
@@ -120,11 +110,11 @@ exports.getProfile = async (req, res) => {
       active: "profile",
       isLoggedIn: false,
       userData: null,
-      address: null
+      address: null,
+      isDetailPage: null,
     });
   }
 };
-
 
 // --------------------
 // VIEW CART
@@ -136,10 +126,10 @@ exports.getCart = (req, res) => {
     active: "cart",
     cart,
     isLoggedIn: res.locals.isLoggedIn,
-    hasItems: cart.length > 0
+    hasItems: cart.length > 0,
+    isDetailPage: null,
   });
 };
-
 
 // --------------------
 // ADD TO CART
@@ -159,9 +149,7 @@ exports.addToCart = async (req, res) => {
     const cart = req.session.cart;
 
     // check existing item
-    const existingItem = cart.find(
-      item => item.productId === productId
-    );
+    const existingItem = cart.find((item) => item.productId === productId);
 
     if (existingItem) {
       existingItem.quantity += 1;
@@ -171,12 +159,11 @@ exports.addToCart = async (req, res) => {
         name: product.name,
         weight: product.weight,
         price: product.price,
-        quantity: 1
+        quantity: 1,
       });
     }
 
     res.redirect("/cart");
-
   } catch (err) {
     console.error("Add to cart error:", err);
     res.redirect("/");
@@ -194,7 +181,7 @@ exports.removeFromCart = (req, res) => {
   }
 
   req.session.cart = req.session.cart.filter(
-    item => item.productId !== productId
+    (item) => item.productId !== productId
   );
 
   res.redirect("/cart");
