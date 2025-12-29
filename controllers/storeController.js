@@ -23,9 +23,27 @@ exports.getIndex = async (req, res) => {
   }
 };
 
-exports.getStore = (req, res) => {
-  res.render("pages/store", { active: "store", isDetailPage: null });
+exports.getStore = async (req, res) => {
+  try {
+    const products = await ProductDB.find({ isActive: true });
+
+    return res.render("pages/store", {
+      active: "store",
+      products,
+      isDetailPage: null,
+    });
+  } catch (error) {
+    console.error("Store page error:", error);
+
+    // IMPORTANT: never crash EJS
+    return res.render("pages/store", {
+      active: "store",
+      products: [],
+      isDetailPage: null,
+    });
+  }
 };
+
 
 exports.getProductDetail = async (req, res) => {
   try {

@@ -5,56 +5,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  
-   <%- include('../partials/link') %>
-   
+
+  <%- include('../partials/link') %>
+    <link rel="stylesheet" href="/css/detailPage.css" />
+
 </head>
 
 <body>
   <%- include('../partials/header') %>
 
 
-
     <section class="product-detail">
 
-      <img src="/assets/honey.webp" alt="<%= product.name %>">
+      <!-- PRODUCT CAROUSEL -->
+      <div class="product-media">
+        <div class="carousel">
 
-      <h1>
-        <%= product.name %>
-      </h1>
-      <p>
-        <%= product.weight %>
-      </p>
+          <div class="carousel-track">
+            <img src="/assets/product.webp" alt="<%= product.name %>">
+            <img src="/assets/product.webp" alt="<%= product.name %>">
+            <img src="/assets/product.webp" alt="<%= product.name %>">
+          </div>
 
-      <% if (product.discount> 0) { %>
-        <p class="mrp">₹<%= product.mrp %>
+          <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PRODUCT INFO -->
+      <div class="product-info">
+
+        <h1 class="product-title">
+          <%= product.name %>
+        </h1>
+
+        <p class="product-weight">
+          <%= product.weight %>
         </p>
-        <% } %>
 
-          <p class="price">₹<%= product.price %>
+        <% if (product.discount> 0) { %>
+          <p class="mrp">₹<%= product.mrp %>
           </p>
+          <% } %>
 
-          <% if (product.discount> 0) { %>
-            <span class="discount">
-              <%= product.discount %>% OFF
-            </span>
-            <% } %>
+            <div class="price-row">
+              <span class="price">₹<%= product.price %></span>
+              <% if (product.discount> 0) { %>
+                <span class="discount">
+                  <%= product.discount %>% OFF
+                </span>
+                <% } %>
+            </div>
 
-              <form action="/cart/add" method="POST">
-                <input type="hidden" name="productId" value="<%= product._id %>">
-                <button type="submit">Add to Cart</button>
-              </form>
+            <p class="product-desc">
+              Pure raw forest honey sourced naturally, unprocessed and rich in nutrients.
+            </p>
 
-
+      </div>
     </section>
+
+    <!-- FIXED CTA -->
+    <div class="product-cta">
+      <form action="/cart/add" method="POST">
+        <input type="hidden" name="productId" value="<%= product._id %>">
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+
 
 
     <%- include('../partials/burgerMenu') %>
-
-
-
-      <%- include('../partials/burgerMenu') %>
-        <script src="/javascript/header.js"></script>
+      <script src="/javascript/header.js"></script>
 
 </body>
 

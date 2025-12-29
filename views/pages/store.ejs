@@ -1,16 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
 
    <%- include('../partials/link') %>
-   
+      <link rel="stylesheet" href="/css/store.css">
+
 </head>
+
 <body>
    <%- include('../partials/header') %>
-   <%- include('../partials/burgerMenu') %>
-   <script src="/javascript/header.js"></script>
+
+      <section class="store-products">
+
+         <h2 class="store-title">OUR PRODUCTS</h2>
+
+         <div class="store-grid">
+
+            <% if (products.length===0) { %>
+               <p>No products available</p>
+               <% } %>
+
+                  <% const ratingMap=[90, 75, 60, 85]; const reviewMap=[512, 399, 120, 980]; %>
+
+                     <% products.forEach((product, index)=> {
+                        const ratingPercent = ratingMap[index % ratingMap.length];
+                        const reviewCount = reviewMap[index % reviewMap.length];
+                        %>
+
+                        <a href="/product/<%= product._id %>" class="store-card">
+
+                           <!-- IMAGE -->
+                           <div class="store-image">
+                              <img src="/assets/product.webp" alt="<%= product.name %>">
+                           </div>
+
+                           <!-- DATA -->
+                           <div class="store-info">
+
+
+
+                              <!-- TITLE -->
+                              <h3 class="store-title-text">
+                                 <%= product.name %> – <%= product.weight %>
+                              </h3>
+
+                              <!-- RATING -->
+                              <div class="store-rating">
+                                 <span class="store-stars" data-rating-percent="<%= ratingPercent %>">
+                                    <span class="stars-empty">
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                    </span>
+                                    <span class="stars-filled">
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                       <i class="fas fa-star"></i>
+                                    </span>
+                                 </span>
+                                 <span class="store-review">(<%= reviewCount %>)</span>
+                              </div>
+
+                              <!-- PRICE AREA -->
+                              <div class="store-price">
+
+                                 <!-- DISCOUNT + MRP -->
+                                 <% if (product.discount> 0) { %>
+                                    <div class="store-offer">
+                                       <span class="store-discount">
+                                          -<%= product.discount %>% OFF
+                                       </span>
+                                       <span class="store-mrp">₹<%= product.mrp %></span>
+                                    </div>
+                                    <% } %>
+
+                                       <!-- FINAL PRICE -->
+                                       <div class="store-final-wrap">
+                                          <span class="store-final">₹<%= product.price %></span>
+                                       </div>
+
+                                       <!-- ADD TO CART -->
+                                       <button class="store-cart-btn" aria-label="Add to cart">
+                                          Add To Cart
+                                       </button>
+
+                              </div>
+
+                           </div>
+
+                        </a>
+
+                        <% }) %>
+
+         </div>
+
+      </section>
+
+      <script>
+         document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".store-stars").forEach(el => {
+               const percent = el.dataset.ratingPercent || 0;
+               el.querySelector(".stars-filled").style.width = percent + "%";
+            });
+         });
+      </script>
+
+
+      <%- include('../partials/burgerMenu') %>
+         <script src="/javascript/header.js"></script>
 </body>
+
 </html>

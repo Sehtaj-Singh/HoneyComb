@@ -1,0 +1,196 @@
+/* =====================================================
+   PRODUCT DETAIL PAGE – MOBILE FIRST
+   ===================================================== */
+
+/* ---------- ROOT SAFE PADDING ---------- */
+.product-detail {
+  padding: 14px;
+  padding-bottom: 140px; /* CTA + lower nav */
+  background: #ffffff;
+}
+
+/* =====================================================
+   PRODUCT MEDIA / CAROUSEL
+   ===================================================== */
+
+.product-media {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* 5 / 4 ratio carousel */
+.carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  background: #f7f7f7;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Track */
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* Images – FIXED SIZE */
+.carousel-track img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: contain;   /* 🔥 fixes oversized jar */
+  padding: 12px;
+}
+
+/* Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cfcfcf;
+}
+
+.dot.active {
+  background: #414664;
+}
+
+/* =====================================================
+   PRODUCT INFO
+   ===================================================== */
+
+.product-info {
+  margin-top: 18px;
+}
+
+/* Title */
+.product-title {
+  font-family: Oswald, sans-serif;
+  font-size: 1.35rem;
+  color: #414664;
+  letter-spacing: 0.4px;
+}
+
+/* Weight */
+.product-weight {
+  margin-top: 4px;
+  font-family: Inika, serif;
+  color: #5f443a;
+  font-size: 0.95rem;
+}
+
+/* MRP */
+.mrp {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #9c8f86;
+  text-decoration: line-through;
+}
+
+/* Price Row */
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.price {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #414664;
+}
+
+.discount {
+  background: #f4e7c6;
+  color: #5f443a;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-family: Poppins, sans-serif;
+}
+
+/* Description */
+.product-desc {
+  margin-top: 14px;
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  color: #4a3b2a;
+  line-height: 1.55;
+}
+
+/* =====================================================
+   FIXED CTA (ABOVE LOWER NAV)
+   ===================================================== */
+
+.product-cta {
+  position: fixed;
+  bottom: 0; /* EXACT lower nav height */
+  left: 0;
+  width: 94vw;
+  padding: 2vh 3vw;
+  background: #ffffff;
+  box-shadow: 0 -6px 18px rgba(0,0,0,0.12);
+  z-index: 1100; /* ABOVE lowerHeader (1000) */
+}
+
+.product-cta button {
+  width: 100%;
+  background: #d89a2b;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* =====================================================
+   DESKTOP / LARGE SCREENS
+   ===================================================== */
+
+@media (min-width: 1024px) {
+
+  .product-detail {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Sticky image */
+  .product-media {
+    position: sticky;
+    top: 90px; /* below header */
+    align-self: start;
+  }
+
+  .carousel {
+    border-radius: 20px;
+  }
+
+  /* CTA flows normally on desktop */
+  .product-cta {
+    position: static;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 28px;
+  }
+
+  .product-cta button {
+    width: auto;
+    padding: 14px 44px;
+  }
+}
