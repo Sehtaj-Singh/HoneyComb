@@ -1,17 +1,9 @@
-/* =====================================================
-   PRODUCT DETAIL PAGE – MOBILE FIRST
-   ===================================================== */
 
-/* ---------- ROOT SAFE PADDING ---------- */
 .product-detail {
   padding: 14px;
   padding-bottom: 140px; /* CTA + lower nav */
   background: #ffffff;
 }
-
-/* =====================================================
-   PRODUCT MEDIA / CAROUSEL
-   ===================================================== */
 
 .product-media {
   width: 100%;
@@ -28,6 +20,22 @@
   overflow: hidden;
 }
 
+/* Each slide */
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+}
+
+/* Image */
+.carousel-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 12px;
+}
 /* Track */
 .carousel-track {
   display: flex;
@@ -35,13 +43,6 @@
   transition: transform 0.4s ease;
 }
 
-/* Images – FIXED SIZE */
-.carousel-track img {
-  min-width: 100%;
-  height: 100%;
-  object-fit: contain;   /* 🔥 fixes oversized jar */
-  padding: 12px;
-}
 
 /* Dots */
 .carousel-dots {
@@ -72,6 +73,7 @@
   margin-top: 18px;
 }
 
+
 /* Title */
 .product-title {
   font-family: Oswald, sans-serif;
@@ -91,7 +93,7 @@
 /* MRP */
 .mrp {
   margin-top: 10px;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   color: #9c8f86;
   text-decoration: line-through;
 }
@@ -105,15 +107,16 @@
 }
 
 .price {
-  font-size: 1.45rem;
+  font-size: 1.9rem;
   font-weight: 600;
-  color: #414664;
+  color: #4a3b2a;
+  font-family: var(--font-title);
 }
 
 .discount {
-  background: #f4e7c6;
-  color: #5f443a;
-  padding: 4px 8px;
+  background: #f5f7f8;
+  color: #cf4550;
+  padding: 6px 10px;
   border-radius: 6px;
   font-size: 0.7rem;
   font-family: Poppins, sans-serif;
@@ -136,11 +139,22 @@
   position: fixed;
   bottom: 0; /* EXACT lower nav height */
   left: 0;
+  height: 6vh;
   width: 94vw;
   padding: 2vh 3vw;
   background: #ffffff;
   box-shadow: 0 -6px 18px rgba(0,0,0,0.12);
   z-index: 1100; /* ABOVE lowerHeader (1000) */
+}
+
+#lower-btn{
+  display: flex;
+  gap: 4vw;
+}
+#buy-btn{
+  color: #d89a2b;
+  background-color: white;
+  border: 2px solid #d89a2b;
 }
 
 .product-cta button {

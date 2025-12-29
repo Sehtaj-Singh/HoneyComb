@@ -6,73 +6,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-   <%- include('../partials/link') %>
+  <%- include('../partials/link') %>
     <link rel="stylesheet" href="/css/order.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
+
 </head>
 
 <body>
   <%- include('../partials/header') %>
 
-<% if (!isLoggedIn) { %>
+    <% if (!isLoggedIn) { %>
 
-  <!-- STATE 1: NOT LOGGED IN -->
-  <section class="empty-state cart-guest">
-    <div class="empty-state__visual">
-      <img src="assets/login.jpg" alt="Login required">
-    </div>
+      <!-- STATE 1: NOT LOGGED IN -->
+      <section class="empty-state cart-guest">
+        <div class="empty-state__visual">
+          <img src="assets/login.jpg" alt="Login required">
+        </div>
 
-    <div class="empty-state__content">
-      <h2>You are not logged in</h2>
-      <p>Please login to see your cart.</p>
+        <div class="empty-state__content">
+          <h2>You are not logged in</h2>
+          <p>Please login to see your cart.</p>
 
-      <div class="empty-state__actions">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      </div>
-    </div>
-  </section>
+          <div class="empty-state__actions">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+          </div>
+        </div>
+      </section>
 
-<% } else if (!hasItems) { %>
+      <% } else if (!hasItems) { %>
 
-  <!-- STATE 2: LOGGED IN, EMPTY CART -->
-  <section class="empty-state cart-empty">
-    <div class="empty-state__visual">
-      <img src="assets/cart.jpg" alt="Empty cart">
-    </div>
+        <!-- STATE 2: LOGGED IN, EMPTY CART -->
+        <section class="empty-state cart-empty">
+          <div class="empty-state__visual">
+            <img src="assets/cart.jpg" alt="Empty cart">
+          </div>
 
-    <div class="empty-state__content">
-      <h2>Your cart is empty</h2>
-      <p>Add items to your cart to continue shopping.</p>
+          <div class="empty-state__content">
+            <h2>Your cart is empty</h2>
+            <p>Add items to your cart to continue shopping.</p>
 
-      <div class="empty-state__actions">
-        <a href="/store">Shop Now</a>
-      </div>
-    </div>
-  </section>
+            <div class="empty-state__actions">
+              <a href="/store">Shop Now</a>
+            </div>
+          </div>
+        </section>
 
-<% } else { %>
+        <% } else { %>
 
-  <!-- STATE 3: LOGGED IN, CART HAS ITEMS -->
-  <section class="cart-page">
-    <h2>Your Cart</h2>
+          <!-- STATE 3: LOGGED IN, CART HAS ITEMS -->
+          <section class="cart-page">
 
-    <% cart.forEach(item => { %>
-      <div class="cart-item">
-        <p><%= item.name %> (<%= item.weight %>)</p>
-        <p>₹<%= item.price %> × <%= item.quantity %></p>
+            <h1>YOUR CART</h1>
 
-        <form action="/cart/remove" method="POST">
-          <input type="hidden" name="productId" value="<%= item.productId %>">
-          <button type="submit">Remove</button>
-        </form>
-      </div>
-    <% }) %>
-  </section>
+            <div class="cart-layout">
 
-<% } %>
+              <!-- LEFT : CART ITEMS -->
+              <div class="cart-items">
 
-<%- include('../partials/burgerMenu') %>
-<script src="/javascript/header.js"></script>
+                <% cart.forEach(item=> { %>
+
+                  <div class="cart-item">
+
+                    <!-- IMAGE + QTY -->
+                    <div class="cart-item-media">
+                      <div class="cart-item-image">
+                        <img src="/assets/product.png">
+                      </div>
+
+                      <div class="cart-qty">
+                        <button type="button">−</button>
+                        <span>
+                          <%= item.quantity %>
+                        </span>
+                        <button type="button">+</button>
+                      </div>
+                    </div>
+
+                    <!-- DATA -->
+                    <div class="cart-item-data">
+                      <p class="cart-item-name">
+                        <%= item.name %>
+                      </p>
+                      <p class="cart-item-weight">
+                        <%= item.weight %>
+                      </p>
+                      <p class="cart-item-price">₹<%= item.price %>
+                      </p>
+
+                      <form action="/cart/remove" method="POST">
+                        <input type="hidden" name="productId" value="<%= item.productId %>">
+                        <button class="remove-btn" type="submit">Remove</button>
+                      </form>
+                    </div>
+
+                  </div>
+
+                  <% }) %>
+
+              </div>
+
+              <!-- RIGHT : SUMMARY -->
+              <div class="cart-summary">
+                <h3>Price Details</h3>
+
+                <div class="summary-row">
+                  <span>Total MRP</span>
+                  <span>₹---</span>
+                </div>
+
+                <div class="summary-row">
+                  <span>Discount</span>
+                  <span>- ₹---</span>
+                </div>
+
+                <div class="summary-row total">
+                  <span>Total Amount</span>
+                  <span>₹---</span>
+                </div>
+              </div>
+
+            </div>
+
+          </section>
+
+
+
+          <% } %>
+
+            <%- include('../partials/burgerMenu') %>
+              <%- include('../partials/flashModal') %>
+                <script src="/javascript/header.js"></script>
 
 </body>
 

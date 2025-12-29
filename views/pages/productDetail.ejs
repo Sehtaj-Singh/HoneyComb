@@ -22,10 +22,21 @@
         <div class="carousel">
 
           <div class="carousel-track">
-            <img src="/assets/product.webp" alt="<%= product.name %>">
-            <img src="/assets/product.webp" alt="<%= product.name %>">
-            <img src="/assets/product.webp" alt="<%= product.name %>">
+
+            <div class="carousel-slide">
+              <img src="/assets/product.png" alt="<%= product.name %>">
+            </div>
+
+            <div class="carousel-slide">
+              <img src="/assets/product.png" alt="<%= product.name %>">
+            </div>
+
+            <div class="carousel-slide">
+              <img src="/assets/product.png" alt="<%= product.name %>">
+            </div>
+
           </div>
+
 
           <div class="carousel-dots">
             <span class="dot active"></span>
@@ -38,14 +49,9 @@
 
       <!-- PRODUCT INFO -->
       <div class="product-info">
-
         <h1 class="product-title">
-          <%= product.name %>
+          <%= product.name %> - <%= product.weight %>
         </h1>
-
-        <p class="product-weight">
-          <%= product.weight %>
-        </p>
 
         <% if (product.discount> 0) { %>
           <p class="mrp">₹<%= product.mrp %>
@@ -70,8 +76,9 @@
 
     <!-- FIXED CTA -->
     <div class="product-cta">
-      <form action="/cart/add" method="POST">
+      <form id="lower-btn" action="/cart/add" method="POST">
         <input type="hidden" name="productId" value="<%= product._id %>">
+        <button id="buy-btn" type="submit">Buy Now</button>
         <button type="submit">Add to Cart</button>
       </form>
     </div>
@@ -79,7 +86,9 @@
 
 
     <%- include('../partials/burgerMenu') %>
+    <%- include('../partials/flashModal') %>
       <script src="/javascript/header.js"></script>
+      <script src="/javascript/store.js"></script>
 
 </body>
 

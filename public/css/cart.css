@@ -1,0 +1,184 @@
+/* =====================================================
+   CART PAGE – BASE
+   ===================================================== */
+
+.cart-page {
+  padding: 14px;
+  padding-bottom: 120px; /* space for lower nav */
+}
+
+.cart-page h1 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #414664;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   LAYOUT
+   ===================================================== */
+
+.cart-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =====================================================
+   CART ITEM CARD
+   ===================================================== */
+
+.cart-item {
+  width: 94%;
+  margin: auto;
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #e2e2e2; /* soft grey border */
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+/* =====================================================
+   IMAGE + QUANTITY
+   ===================================================== */
+
+.cart-item-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-image {
+  width: 40vw;
+  background: #f5f7f8; 
+  border-radius: 10px;
+}
+
+.cart-item-image
+ img{
+  width: 90% ;
+ }
+/* Quantity UI (static for now) */
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-qty button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart-qty span {
+  font-size: 0.9rem;
+  color: #414664;
+}
+
+/* =====================================================
+   DATA SECTION
+   ===================================================== */
+
+.cart-item-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 6px;
+}
+
+.cart-item-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #414664;
+}
+
+.cart-item-weight {
+  font-size: 1.2rem;
+  color: #5f443a;
+}
+
+.cart-item-price {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4a3b2a;
+}
+
+/* Long remove button */
+.remove-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d32f2f;
+  background: transparent;
+  color: #d32f2f;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* =====================================================
+   SUMMARY CARD
+   ===================================================== */
+
+.cart-summary {
+  width: 94%;
+  margin: auto;
+  padding: 16px;
+  border: 1px solid #e2e2e2;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.cart-summary h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #414664;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #4a3b2a;
+}
+
+.summary-row.total {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* =====================================================
+   DESKTOP VIEW
+   ===================================================== */
+
+@media (min-width: 1024px) {
+
+  .cart-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .cart-item {
+    width: 100%;
+  }
+
+  .cart-summary {
+    width: 100%;
+    position: sticky;
+    top: 90px; /* below header */
+  }
+}

@@ -45,6 +45,13 @@ server.use(session({
   }
 }));
 
+server.use((req, res, next) => {
+  res.locals.flash = req.session.flash;
+  delete req.session.flash; // one-time use
+  next();
+});
+
+
 //routers
 server.use(storeRouter);
 server.use(loginRouter);

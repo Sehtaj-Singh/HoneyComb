@@ -44,7 +44,6 @@ exports.getStore = async (req, res) => {
   }
 };
 
-
 exports.getProductDetail = async (req, res) => {
   try {
     const product = await ProductDB.findById(req.params.id);
@@ -181,7 +180,13 @@ exports.addToCart = async (req, res) => {
       });
     }
 
-    res.redirect("/cart");
+    req.session.flash = {
+      type: "success",
+      message: "Item added to cart",
+    };
+
+    const redirectTo = req.get("referer") || "/cart";
+    res.redirect(redirectTo);
   } catch (err) {
     console.error("Add to cart error:", err);
     res.redirect("/");
@@ -202,5 +207,11 @@ exports.removeFromCart = (req, res) => {
     (item) => item.productId !== productId
   );
 
-  res.redirect("/cart");
+  req.session.flash = {
+    type: "success",
+    message: "Item removed from cart",
+  };
+
+  const redirectTo = req.get("referer") || "/cart";
+  res.redirect(redirectTo);
 };
