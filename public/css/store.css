@@ -20,7 +20,8 @@
 .store-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
+  row-gap: 25px;    
+  column-gap: 15px;
 }
 
 /* =======================
@@ -90,12 +91,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 6px 0;
+  margin: 3px 0;
 }
 
 .store-stars {
   position: relative;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .stars-empty i {
@@ -116,7 +117,7 @@
 }
 
 .store-review {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #5f443a;
   font-family: var(--font-button);
 }
@@ -131,7 +132,7 @@
   margin-top: 6px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 1px;
 }
 
 /* DISCOUNT + MRP */
@@ -159,6 +160,7 @@
 
 .store-final-wrap {
   text-align: center;
+  margin-bottom: 1px;
 }
 
 .store-final {
@@ -171,7 +173,16 @@
 .store-cart-btn {
   width: 70%;
   margin-left: 15%;
-  background: #5f443a;
+  background: linear-gradient(
+    to right,
+    #f6c760 0%,
+    #e8b146 30%,
+    #d89a2b 55%,
+    #c4881f 100%
+  );
+  box-shadow:
+    inset 1px 1px 5px rgba(255, 255, 255, 0.35),
+    2px 2px 10px rgba(216, 154, 43, 0.35);
   border: none;
   color: #fff;
   padding: 10px;

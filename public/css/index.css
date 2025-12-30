@@ -7,12 +7,10 @@ body{
 
 .hero-image {
   display: block;
-  width: 94vw;
-  margin-top: 3vw;
-  margin-left: 3vw;
+  width: 100vw;
   aspect-ratio: 1536 / 1024;
-  background: url("/assets/hero.png") center / cover no-repeat;
-  border-radius: 14px;
+  background: url("/assets/hero1.png") center / cover no-repeat;
+  box-shadow: 3px 4px 10px #4a3b2a47;
 }
 
 /* =====================================================
@@ -20,7 +18,7 @@ body{
    ===================================================== */
 
 #hero-badges {
-  margin-top: 3vh;
+  margin-top: 5vh;
   padding-left: 3vw;
   background: #ffffff;
   display: flex;
@@ -139,6 +137,9 @@ body{
     #d89a2b 45%,
     #b77f1f 100%
   );
+  box-shadow:
+    inset 1px 1px 5px rgba(255, 255, 255, 0.5),
+    3px 3px 10px rgba(216, 154, 43, 0.5);
   transition: background-color 0.2s ease;
 }
 
@@ -178,7 +179,8 @@ body{
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
+   row-gap: 25px;    
+  column-gap: 10px;
 }
 
 /* Product Card */
@@ -283,7 +285,7 @@ product stars
 .star-wrapper {
   position: relative;
   display: inline-block;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1;
 }
 
