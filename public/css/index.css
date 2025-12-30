@@ -40,9 +40,9 @@ body{
    /* Soft light gradient */
   background: linear-gradient(
   180deg,
-  #f6f5f3 0%,
-  #f3f2f0 55%,
-  #efeeec 100%
+  #f6f6f6 0%,
+  #f2f2f2 55%,
+  #eeeeee 100%
 );
 
 
@@ -140,6 +140,7 @@ body{
 }
 
 .brand-content .btn {
+  position: relative;
   display: inline-block;
   padding: 12px 24px;
   margin-bottom: 1vh;
@@ -159,6 +160,16 @@ body{
     inset 1px 1px 5px rgba(255, 255, 255, 0.5),
     3px 3px 10px rgba(216, 154, 43, 0.5);
   transition: background-color 0.2s ease;
+}
+
+.brand-content .btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.3;
+  border-radius: inherit;
 }
 
 .brand-content .btn:hover {
@@ -360,7 +371,7 @@ product stars
 }
 
 .process-card {
-  background: #f3f2f0;
+  background: #f2f2f2;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 2px 2px 15px #4a3b2a47;
