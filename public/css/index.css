@@ -18,7 +18,7 @@ body{
    ===================================================== */
 
 #hero-badges {
-  margin-top: 5vh;
+  margin-top: 3vh;
   padding-left: 3vw;
   background: #ffffff;
   display: flex;
@@ -26,41 +26,58 @@ body{
   gap: 2.5vh;
 }
 
-#hero-badges h1 {
-  font-size: 3.5vh;
-  letter-spacing: 3px;
-  text-align: center;
-  color: #414664;
-  font-family: var(--font-title);
-}
 
 /* Badge Tile */
 
 .badge-tile {
+  position: relative;
   display: flex;
   align-items: center;
   width: 88vw;
   padding: 1.5vh 3vw;
   border-radius: 12px;
-  background-color: #f5f7f8;
-}
+  background-color: #f5f7f853;
+  overflow: hidden;
+   /* Soft light gradient */
+  background: linear-gradient(
+    180deg,
+    #f8fafb 0%,
+    #f5f7f8 55%,
+    #eef1f2 100%
+  );
 
+  /* Outside + inset shadows */
+  box-shadow:
+    2px 2px 14px rgba(0, 0, 0, 0.06),      /* outer soft lift */
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8), /* top inner highlight */
+    inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+  
+}
+.badge-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.2;
+  border-radius: inherit;
+}
+#hero-badges-title{
+  font-family: var(--font-title);
+  font-size: 4vh;
+  color: #414664;
+  letter-spacing: 2px;
+  text-align: center;
+}
 .badge-icon {
-  width: 15vw;
+  width: 17vw;
   margin-right: auto;
 }
 
-.badge-content h3 {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-family: var(--font-subtitle);
-  margin-bottom: 6px;
-  color: #5f443a;
-}
 
 .badge-content p {
-  font-size: 13px;
+  font-size: 15px;
   font-family: var(--font-body);
   line-height: 1.4;
   color: #555;
