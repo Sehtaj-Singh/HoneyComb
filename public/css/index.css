@@ -23,7 +23,7 @@ body{
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 2.1vh;
+  gap: 2.2vh;
 }
 
 
@@ -40,10 +40,11 @@ body{
    /* Soft light gradient */
   background: linear-gradient(
   180deg,
-  #fdfbf7 0%,
-  #faf7f2 55%,
-  #f4efe6 100%
+  #f6f5f3 0%,
+  #f3f2f0 55%,
+  #efeeec 100%
 );
+
 
   /* Outside + inset shadows */
   box-shadow:
@@ -359,7 +360,7 @@ product stars
 }
 
 .process-card {
-  background: #f6f6f6;
+  background: #f3f2f0;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 2px 2px 15px #4a3b2a47;
