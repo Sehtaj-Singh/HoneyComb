@@ -18,12 +18,12 @@ body{
    ===================================================== */
 
 #hero-badges {
-  margin-top: 3vh;
+  margin-top: 2vh;
   padding-left: 3vw;
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 2.5vh;
+  gap: 2vh;
 }
 
 
@@ -34,7 +34,7 @@ body{
   display: flex;
   align-items: center;
   width: 88vw;
-  padding: 1.5vh 3vw;
+  padding: 1vh 3vw;
   border-radius: 12px;
   background-color: #f5f7f853;
   overflow: hidden;
@@ -65,13 +65,13 @@ body{
 }
 #hero-badges-title{
   font-family: var(--font-title);
-  font-size: 4vh;
+  font-size: 3.5vh;
   color: #414664;
   letter-spacing: 2px;
   text-align: center;
 }
 .badge-icon {
-  width: 17vw;
+  width: 18vw;
   margin-right: auto;
 }
 
@@ -89,12 +89,13 @@ body{
    ===================================================== */
 
 .brand {
-  margin-top: 5vh;
+  margin-top: 9vh;
 }
 
 .brand-inner {
   display: flex;
   margin-bottom: 6vh;
+  margin-top: 5vh;
 }
 
 .brand-inner img {
@@ -173,6 +174,7 @@ body{
 .brand-down img {
   width: 100%;
   height: auto;
+  box-shadow: 3px 4px 10px #4a3b2a47;
 }
 
 /* =====================================================
@@ -358,9 +360,10 @@ product stars
 }
 
 .process-card {
-  background: #f9f9f9;
+  background: #f5f7f8;
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 2px 2px 15px #4a3b2a47;
 }
 
 .process-image img {
