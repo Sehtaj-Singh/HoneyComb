@@ -6,99 +6,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-   <%- include('../partials/link') %>
-   <link rel="stylesheet" href="/css/profile.css" />
-   
+  <%- include('../partials/link') %>
+    <link rel="stylesheet" href="/css/profile.css" />
+
 </head>
 
 <body>
-    <%- include('../partials/header') %>
+  <%- include('../partials/header') %>
 
     <% if (!isLoggedIn) { %>
-  <section class="empty-state">
+      <section class="empty-state">
 
-    <div class="empty-state__visual">
-      <img src="assets/login.jpg" alt="Login required">
-    </div>
+        <div class="empty-state__visual">
+          <img src="assets/login.jpg" alt="Login required">
+        </div>
 
-    <div class="empty-state__content">
-      <h2>You are not logged in</h2>
-      <p>Please login to access your profile.</p>
+        <div class="empty-state__content">
+          <h2>You are not logged in</h2>
+          <p>Please login to access your profile.</p>
 
-      <div class="empty-state__actions">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      </div>
-    </div>
+          <div class="empty-state__actions">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+          </div>
+        </div>
 
-  </section>
-<% } %>
-
-
-   <% if (isLoggedIn && userData) { %>
-
-<section class="profile-page">
-
-  <!-- PROFILE HEADER -->
-  <div class="profile-card">
-    <div class="profile-avatar">
-      <span><%= userData.name.charAt(0).toUpperCase() %></span>
-    </div>
-
-    <div class="profile-info">
-      <h2>My Profile</h2>
-      <p class="profile-name"><%= userData.name %></p>
-      <p class="profile-email"><%= userData.email %></p>
-      <p class="profile-phone">
-        Phone: <%= userData.phone || "Not added" %>
-      </p>
-    </div>
-  </div>
-
-  <!-- ADDRESS -->
-  <div class="profile-section">
-    <h3>Address</h3>
-
-    <% if (address) { %>
-      <p class="address-name"><%= address.fullName %></p>
-      <p class="address-text">
-        <%= address.flat %>, <%= address.area %>,
-        <%= address.city %>, <%= address.state %> - <%= address.pincode %>
-      </p>
-
-      <% if (address.landmark) { %>
-        <p class="address-landmark">Landmark: <%= address.landmark %></p>
+      </section>
       <% } %>
 
-      <a href="/profile/address" class="link-btn">Change address</a>
-    <% } else { %>
-      <p class="address-empty">No address added</p>
-      <a href="/profile/address" class="link-btn">Add address</a>
-    <% } %>
-  </div>
 
-  <!-- ACCOUNT LINKS -->
-  <div class="profile-section">
-    <h3>Account</h3>
+        <% if (isLoggedIn && userData) { %>
 
-    <ul class="profile-links">
-      <li><a href="/privacy-policy">Privacy Policy</a></li>
-      <li><a href="/terms">Terms & Conditions</a></li>
-      <li><a href="/support">Help & Support</a></li>
-      <li class="logout"><a href="/logout">Logout</a></li>
-    </ul>
-  </div>
+          <section class="profile-page">
 
-</section>
+            <!-- PROFILE HEADER -->
+            <div class="profile-card">
+              <div class="profile-avatar">
+                <span>
+                  <%= userData.name.charAt(0).toUpperCase() %>
+                </span>
+              </div>
 
-<% } %>
+              <div class="profile-info">
+                <h2>My Profile</h2>
+                <p class="profile-name">
+                  <%= userData.name %>
+                </p>
+                <p class="profile-email">
+                  <%= userData.email %>
+                </p>
+                <p class="profile-phone">
+                  Phone: <%= userData.phone || "Not added" %>
+                </p>
+              </div>
+            </div>
+
+            <!-- ADDRESS -->
+            <div class="profile-section">
+              <h3>Address</h3>
+
+              <% if (address) { %>
+                <p class="address-name">
+                  <%= address.fullName %>
+                </p>
+                <p class="address-text">
+                  <%= address.flat %>, <%= address.area %>,
+                      <%= address.city %>, <%= address.state %> - <%= address.pincode %>
+                </p>
+
+                <% if (address.landmark) { %>
+                  <p class="address-landmark">Landmark: <%= address.landmark %>
+                  </p>
+                  <% } %>
+
+                    <button type="button" class="link-btn" onclick='openAddressModalFromBtn(this)'
+                      data-address='<%- JSON.stringify(address) %>'>
+                      Change address
+                    </button>
+
+                    <% } else { %>
+                      <p class="address-empty">No address added</p>
+                      <button type="button" class="link-btn" onclick="openAddressModal()">
+                        Add address
+                      </button>
+                      <% } %>
+            </div>
+
+            <!-- ACCOUNT LINKS -->
+            <div class="profile-section">
+              <h3>Account</h3>
+
+              <ul class="profile-links">
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms & Conditions</a></li>
+                <li><a href="/support">Help & Support</a></li>
+                <li class="logout"><a href="/logout">Logout</a></li>
+              </ul>
+            </div>
+
+          </section>
+
+          <% } %>
 
 
 
-      
-    <%- include('../partials/burgerMenu') %>
-      
-   <script src="/javascript/header.js"></script>
+
+            <%- include('../partials/burgerMenu') %>
+              <%- include('../partials/addressModal') %>
+
+                <script src="/javascript/header.js"></script>
 </body>
 
 </html>

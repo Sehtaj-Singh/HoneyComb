@@ -2,11 +2,15 @@
    CART PAGE – BASE
    ===================================================== */
 
+ body{
+  margin-bottom: 7vh;
+ } 
+
 .cart-page {
   padding: 14px;
-  padding-bottom: 120px; /* space for lower nav */
+   padding-bottom: 8vh;
 }
-
+ 
 .cart-page h1 {
   font-size: 1.5rem;
   margin-bottom: 16px;
@@ -157,6 +161,99 @@
   font-size: 1rem;
   margin-top: 10px;
 }
+
+/* =========================================
+   CART ACTION BAR (BOTTOM)
+   ========================================= */
+
+.cart-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 92vw;
+  height: 7vh;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4vw;
+  z-index: 1100; /* above lower nav */
+}
+
+/* PRICE */
+.cart-action-price {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.cart-action-price span {
+  font-size: 0.75rem;
+  color: #5f443a;
+}
+
+.cart-action-price strong {
+  font-size: 1.1rem;
+  color: #414664;
+}
+
+/* BUTTON */
+.checkout-btn {
+  background: #5f443a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 1.1vh 5vw;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================================
+   CART ADDRESS SECTION
+   ========================================= */
+
+.cart-address {
+  width: 94%;
+  margin: auto;
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  background: #ffffff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cart-address-label {
+  font-size: 0.75rem;
+  color: #5f443a;
+  margin-bottom: 4px;
+}
+
+.cart-address-content {
+  flex: 1;
+}
+
+.cart-address-content p {
+  font-size: 0.85rem;
+  color: #4a3b2a;
+  line-height: 1.4;
+}
+
+.change-address-btn {
+  background: none;
+  border: none;
+  color: #5f443a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 
 /* =====================================================
    DESKTOP VIEW

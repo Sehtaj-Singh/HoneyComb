@@ -28,5 +28,11 @@ storeRouter.get("/cart", storeController.getCart);
 // cart actions
 storeRouter.post("/cart/add", storeController.addToCart);
 storeRouter.post("/cart/remove", storeController.removeFromCart);
+storeRouter.post("/cart/increase", storeController.increaseQty);
+storeRouter.post("/cart/decrease", storeController.decreaseQty);
+
+storeRouter.post("/profile/address", storeController.saveAddress);
+
+
 
 module.exports = storeRouter;

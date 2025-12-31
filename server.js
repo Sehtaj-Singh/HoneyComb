@@ -30,6 +30,7 @@ const userRouter = require("./routers/userRouter");
 const server = express();
 server.use(express.urlencoded());
 server.use(express.static(path.join(rootDir,`public`)));
+server.use(express.json());
 server.use(cookieParser()); // ✅ must come before routes for cookies
 
 // Testing session 

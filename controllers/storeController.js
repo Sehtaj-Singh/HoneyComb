@@ -139,12 +139,32 @@ exports.getProfile = async (req, res) => {
 exports.getCart = (req, res) => {
   const cart = req.session.cart || [];
 
-  return res.render("pages/cart", {
+  let totalMrp = 0;
+  let totalPrice = 0;
+
+  cart.forEach((item) => {
+    const mrp = item.mrp || item.price;
+    totalMrp += mrp * item.quantity;
+    totalPrice += item.price * item.quantity;
+  });
+
+  const discount = totalMrp - totalPrice;
+
+  // 👇 address existence
+  const hasAddress = !!res.locals.user?.address;
+
+  res.render("pages/cart", {
     active: "cart",
     cart,
     isLoggedIn: res.locals.isLoggedIn,
     hasItems: cart.length > 0,
-    isDetailPage: null,
+    summary: {
+      totalMrp,
+      discount,
+      totalPrice,
+    },
+    hasAddress,
+    address: res.locals.user?.address || null,
   });
 };
 
@@ -214,4 +234,72 @@ exports.removeFromCart = (req, res) => {
 
   const redirectTo = req.get("referer") || "/cart";
   res.redirect(redirectTo);
+};
+
+exports.increaseQty = (req, res) => {
+  const { productId } = req.body;
+
+  const cart = req.session.cart || [];
+  const item = cart.find((i) => i.productId === productId);
+
+  if (item) {
+    item.quantity += 1;
+  }
+
+  req.session.flash = {
+    type: "success",
+    message: "Quantity updated",
+  };
+
+  res.redirect(req.get("referer") || "/cart");
+};
+
+exports.decreaseQty = (req, res) => {
+  const { productId } = req.body;
+
+  let cart = req.session.cart || [];
+  const item = cart.find((i) => i.productId === productId);
+
+  if (item) {
+    item.quantity -= 1;
+
+    if (item.quantity <= 0) {
+      cart = cart.filter((i) => i.productId !== productId);
+      req.session.cart = cart;
+    }
+  }
+
+  req.session.flash = {
+    type: "success",
+    message: "Quantity updated",
+  };
+
+  res.redirect(req.get("referer") || "/cart");
+};
+
+exports.saveAddress = async (req, res) => {
+  try {
+    if (!res.locals.isLoggedIn) {
+      return res.status(401).json({ success: false, error: "Unauthorized" });
+    }
+
+    const uid = res.locals.user.uid;
+    const address = req.body;
+
+    await UserDB.updateOne(
+      { uid },
+      {
+        address,
+        lastProfileEditAt: new Date(),
+      }
+    );
+
+    return res.json({ success: true });
+  } catch (err) {
+    console.error("Save address error:", err);
+    return res.status(500).json({
+      success: false,
+      error: "Failed to save address",
+    });
+  }
 };

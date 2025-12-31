@@ -64,45 +64,79 @@
               <!-- LEFT : CART ITEMS -->
               <div class="cart-items">
 
-                <% cart.forEach(item=> { %>
+                <!-- DELIVERY ADDRESS (only if exists) -->
+                <% if (hasAddress && address) { %>
+                  <div class="cart-address">
+                    <div class="cart-address-label">Deliver to</div>
 
-                  <div class="cart-item">
-
-                    <!-- IMAGE + QTY -->
-                    <div class="cart-item-media">
-                      <div class="cart-item-image">
-                        <img src="/assets/product.png">
-                      </div>
-
-                      <div class="cart-qty">
-                        <button type="button">−</button>
-                        <span>
-                          <%= item.quantity %>
-                        </span>
-                        <button type="button">+</button>
-                      </div>
+                    <div class="cart-address-content">
+                      <strong>
+                        <%= address.fullName %>
+                      </strong>
+                      <p>
+                        <%= address.flat %>, <%= address.area %>,
+                            <%= address.city %>, <%= address.state %> - <%= address.pincode %>
+                      </p>
                     </div>
 
-                    <!-- DATA -->
-                    <div class="cart-item-data">
-                      <p class="cart-item-name">
-                        <%= item.name %>
-                      </p>
-                      <p class="cart-item-weight">
-                        <%= item.weight %>
-                      </p>
-                      <p class="cart-item-price">₹<%= item.price %>
-                      </p>
-
-                      <form action="/cart/remove" method="POST">
-                        <input type="hidden" name="productId" value="<%= item.productId %>">
-                        <button class="remove-btn" type="submit">Remove</button>
-                      </form>
-                    </div>
-
+                    <button type="button" class="change-address-btn" onclick='openAddressModalFromBtn(this)'
+                      data-address='<%- JSON.stringify(address) %>'>
+                      Change
+                    </button>
                   </div>
+                  <% } %>
 
-                  <% }) %>
+
+                    <% cart.forEach(item=> { %>
+
+                      <div class="cart-item">
+
+                        <!-- IMAGE + QTY -->
+                        <div class="cart-item-media">
+                          <div class="cart-item-image">
+                            <img src="/assets/product.png">
+                          </div>
+
+                          <div class="cart-qty">
+
+                            <form action="/cart/decrease" method="POST">
+                              <input type="hidden" name="productId" value="<%= item.productId %>">
+                              <button type="submit">−</button>
+                            </form>
+
+                            <span>
+                              <%= item.quantity %>
+                            </span>
+
+                            <form action="/cart/increase" method="POST">
+                              <input type="hidden" name="productId" value="<%= item.productId %>">
+                              <button type="submit">+</button>
+                            </form>
+
+                          </div>
+
+                        </div>
+
+                        <!-- DATA -->
+                        <div class="cart-item-data">
+                          <p class="cart-item-name">
+                            <%= item.name %>
+                          </p>
+                          <p class="cart-item-weight">
+                            <%= item.weight %>
+                          </p>
+                          <p class="cart-item-price">₹<%= item.price %>
+                          </p>
+
+                          <form action="/cart/remove" method="POST">
+                            <input type="hidden" name="productId" value="<%= item.productId %>">
+                            <button class="remove-btn" type="submit">Remove</button>
+                          </form>
+                        </div>
+
+                      </div>
+
+                      <% }) %>
 
               </div>
 
@@ -112,31 +146,60 @@
 
                 <div class="summary-row">
                   <span>Total MRP</span>
-                  <span>₹---</span>
+                  <span>₹<%= summary.totalMrp %></span>
                 </div>
 
                 <div class="summary-row">
                   <span>Discount</span>
-                  <span>- ₹---</span>
+                  <span>- ₹<%= summary.discount %></span>
                 </div>
 
                 <div class="summary-row total">
                   <span>Total Amount</span>
-                  <span>₹---</span>
+                  <span>₹<%= summary.totalPrice %></span>
                 </div>
               </div>
+
 
             </div>
 
           </section>
+
+          <!-- CART ACTION BAR -->
+          <div class="cart-action-bar">
+
+            <!-- PRICE -->
+            <div class="cart-action-price">
+              <span>Total</span>
+              <strong>₹<%= summary.totalPrice %></strong>
+            </div>
+
+            <!-- ACTION -->
+            <div class="cart-action-btn">
+
+              <% if (hasAddress) { %>
+                <button class="checkout-btn">
+                  Checkout
+                </button>
+                <% } else { %>
+                  <button class="checkout-btn" onclick="openAddressModal()">
+                    Add Address
+                  </button>
+                  <% } %>
+
+            </div>
+
+          </div>
+
 
 
 
           <% } %>
 
             <%- include('../partials/burgerMenu') %>
-              <%- include('../partials/flashModal') %>
-                <script src="/javascript/header.js"></script>
+              <%- include('../partials/addressModal') %>
+                <%- include('../partials/flashModal') %>
+                  <script src="/javascript/header.js"></script>
 
 </body>
 
