@@ -85,6 +85,120 @@
 }
 
 /* =====================================================
+   ORDERS LIST (HAS ORDERS)
+   ===================================================== */
+
+.orders-list {
+  padding: 4vh 4vw 8vh;
+  
+}
+
+.orders-title {
+  font-family: var(--font-title); /* Oswald */
+  font-size: 4vh;
+  text-align: center;
+  color: #414664;
+  margin-bottom: 3vh;
+}
+
+/* Order item card */
+
+.order-item-card {
+  display: flex;
+  gap: 4vw;
+  padding: 14px;
+  margin-bottom: 2vh;
+
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+}
+
+/* Image */
+
+.order-item-image img {
+  width: 22vw;
+  max-width: 90px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Data */
+
+.order-item-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.order-item-name {
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: #414664;
+  margin: 0;
+}
+
+.order-item-weight {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #5f443a;
+}
+
+/* Meta row */
+
+.order-item-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #4a3b2a;
+}
+
+/* Status badge */
+
+.order-status {
+  margin-top: 4px;
+  font-size: 12px;
+  font-family: var(--font-button);
+  text-transform: capitalize;
+}
+
+/* Status colors */
+
+.order-status.pending {
+  color: #b08900;
+}
+
+.order-status.shipped {
+  color: #0b5ed7;
+}
+
+.order-status.delivered {
+  color: #198754;
+}
+
+.order-status.cancelled {
+  color: #dc3545;
+}
+
+/* =====================================================
+   DESKTOP (LIGHT ENHANCEMENT ONLY)
+   ===================================================== */
+
+@media (min-width: 1024px) {
+  .orders-list {
+    max-width: 720px;
+    margin: auto;
+  }
+
+  .order-item-image img {
+    max-width: 110px;
+  }
+}
+
+
+/* =====================================================
    DESKTOP REFINEMENT
    ===================================================== */
 

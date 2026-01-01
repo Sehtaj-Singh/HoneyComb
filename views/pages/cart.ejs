@@ -178,7 +178,7 @@
             <div class="cart-action-btn">
 
               <% if (hasAddress) { %>
-                <button class="checkout-btn">
+                <button class="checkout-btn" onclick="startCheckout()">
                   Checkout
                 </button>
                 <% } else { %>
@@ -200,6 +200,8 @@
               <%- include('../partials/addressModal') %>
                 <%- include('../partials/flashModal') %>
                   <script src="/javascript/header.js"></script>
+                  <script src="/javascript/checkout.js"></script>
+                  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 </body>
 

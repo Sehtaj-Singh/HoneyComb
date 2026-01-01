@@ -33,6 +33,8 @@ storeRouter.post("/cart/decrease", storeController.decreaseQty);
 
 storeRouter.post("/profile/address", storeController.saveAddress);
 
+storeRouter.post("/checkout/create", storeController.createCheckoutOrder);
+storeRouter.post("/checkout/verify", storeController.verifyPayment);
 
 
 module.exports = storeRouter;

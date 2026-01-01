@@ -1,7 +1,15 @@
+// Core Modules
+const crypto = require("crypto");
+
 // DB
 const UserDB = require("../models/userDB");
 const OrderDB = require("../models/orderDB");
 const ProductDB = require("../models/productDB");
+
+// Utils
+const razorpay = require("../utils/razorPay");
+const { encrypt } = require("../utils/cryptoUtil");
+const { decrypt } = require("../utils/cryptoUtil");
 
 exports.getIndex = async (req, res) => {
   try {
@@ -78,14 +86,56 @@ exports.getOrders = async (req, res) => {
     // 🔑 Firebase UID from middleware
     const firebaseUid = res.locals.user.uid;
 
-    // 📦 Fetch orders for this user
-    const orders = await OrderDB.find({ firebaseUid });
+    // 📦 Fetch user's order document(s)
+    const orderDocs = await OrderDB.find({ firebaseUid }).lean();
+
+    if (!orderDocs.length) {
+      return res.render("pages/order", {
+        active: "orders",
+        orders: [],
+        hasOrders: false,
+        isDetailPage: null,
+      });
+    }
+
+    // 🧩 Collect all unique productIds from orders
+    const productIds = new Set();
+
+    orderDocs.forEach(doc => {
+      doc.items.forEach(item => {
+        if (item.productId) {
+          productIds.add(item.productId.toString());
+        }
+      });
+    });
+
+    // 📦 Fetch products
+    const products = await ProductDB.find({
+      _id: { $in: Array.from(productIds) }
+    }).lean();
+
+    // 🔁 Create product lookup map
+    const productMap = {};
+    products.forEach(p => {
+      productMap[p._id.toString()] = p;
+    });
+
+    // 🔗 Attach product data to each order item (UI-only)
+    const orders = orderDocs.map(doc => ({
+      ...doc,
+      items: doc.items.map(item => ({
+        ...item,
+        product: productMap[item.productId?.toString()] || null
+      }))
+    }));
 
     return res.render("pages/order", {
       active: "orders",
       orders,
       hasOrders: orders.length > 0,
+      isDetailPage: null,
     });
+
   } catch (err) {
     console.error("Orders error:", err);
 
@@ -97,6 +147,7 @@ exports.getOrders = async (req, res) => {
     });
   }
 };
+
 
 exports.getProfile = async (req, res) => {
   try {
@@ -136,7 +187,7 @@ exports.getProfile = async (req, res) => {
 // --------------------
 // VIEW CART
 // --------------------
-exports.getCart = (req, res) => {
+exports.getCart = async (req, res) => {
   const cart = req.session.cart || [];
 
   let totalMrp = 0;
@@ -150,8 +201,17 @@ exports.getCart = (req, res) => {
 
   const discount = totalMrp - totalPrice;
 
-  // 👇 address existence
-  const hasAddress = !!res.locals.user?.address;
+  let address = null;
+  let hasAddress = false;
+
+  // ✅ FETCH USER FROM DB (THIS WAS MISSING)
+  if (res.locals.isLoggedIn) {
+    const firebaseUid = res.locals.user.uid;
+    const userData = await UserDB.findOne({ uid: firebaseUid });
+
+    address = userData?.address || null;
+    hasAddress = !!address;
+  }
 
   res.render("pages/cart", {
     active: "cart",
@@ -164,7 +224,7 @@ exports.getCart = (req, res) => {
       totalPrice,
     },
     hasAddress,
-    address: res.locals.user?.address || null,
+    address,
   });
 };
 
@@ -301,5 +361,123 @@ exports.saveAddress = async (req, res) => {
       success: false,
       error: "Failed to save address",
     });
+  }
+};
+
+// =========Payment=====
+exports.createCheckoutOrder = async (req, res) => {
+  try {
+    const cart = req.session.cart || [];
+    if (!cart.length) {
+      return res.json({ success: false, message: "Cart empty" });
+    }
+
+    let amount = 0;
+    const items = [];
+
+    for (const cartItem of cart) {
+      const product = await ProductDB.findById(cartItem.productId);
+      if (!product) continue;
+
+      const total = product.price * cartItem.quantity;
+      amount += total;
+
+      items.push({
+        productId: product._id,
+        quantity: cartItem.quantity,
+        total
+      });
+    }
+
+    if (!items.length) {
+      return res.json({ success: false, message: "Invalid cart" });
+    }
+
+    // Create Razorpay order (amount in paise)
+    const razorpayOrder = await razorpay.orders.create({
+      amount: amount * 100,
+      currency: "INR",
+      receipt: `rcpt_${Date.now()}`
+    });
+
+    // Store minimal checkout info in session
+    req.session.checkout = {
+      items,
+      amount,
+      razorpayOrderId: razorpayOrder.id
+    };
+
+    return res.json({
+      success: true,
+      orderId: razorpayOrder.id,
+      amount,
+      key: process.env.RAZORPAY_KEY_ID
+    });
+
+  } catch (err) {
+    console.error("Create checkout error:", err);
+    return res.json({ success: false });
+  }
+};
+
+exports.verifyPayment = async (req, res) => {
+  try {
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature
+    } = req.body;
+
+    // 🔐 Razorpay signature verification (MANDATORY)
+    const body = razorpay_order_id + "|" + razorpay_payment_id;
+    const expectedSignature = crypto
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+      .update(body)
+      .digest("hex");
+
+    if (expectedSignature !== razorpay_signature) {
+      return res.json({ success: false, message: "Invalid signature" });
+    }
+
+    const checkout = req.session.checkout;
+    if (!checkout) {
+      return res.json({ success: false, message: "Checkout session missing" });
+    }
+
+    // Build order items (ONLY required fields)
+    const orderItems = checkout.items.map(item => ({
+      productId: item.productId,
+      quantity: item.quantity,
+      total: item.total,
+
+      razorpay_payment_id: encrypt(razorpay_payment_id),
+      razorpay_order_id: encrypt(razorpay_order_id),
+
+      status: "pending",        // ✅ as requested
+      cancelledBy: null,
+      trackingUrl: "",
+      createdAt: new Date()
+    }));
+
+    // Save order (append to same user document)
+    await OrderDB.updateOne(
+      { firebaseUid: res.locals.user.uid },
+      {
+        $push: {
+          items: { $each: orderItems }
+        }
+      },
+      { upsert: true }
+    );
+
+    // Clear cart + checkout session
+    req.session.cart = [];
+    delete req.session.checkout;
+
+    return res.json({ success: true });
+
+  } catch (err) {
+    console.error("Verify payment error:", err);
+    return res.json({ success: false });
   }
 };

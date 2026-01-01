@@ -1,65 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
-    <%- include('../partials/link') %>
+  <%- include('../partials/link') %>
     <link rel="stylesheet" href="/css/order.css" />
-    
-</head>
-<body>
-   <%- include('../partials/header') %>
 
-   <% if (!isLoggedIn) { %>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+    <% if (!isLoggedIn) { %>
       <section class="empty-state">
 
-    <div class="empty-state__visual">
-      <img src="assets/login.jpg" alt="Login required">
-    </div>
+        <div class="empty-state__visual">
+          <img src="assets/login.jpg" alt="Login required">
+        </div>
 
-    <div class="empty-state__content">
-      <h2>You are not logged in</h2>
-      <p>Please login to see your order.</p>
+        <div class="empty-state__content">
+          <h2>You are not logged in</h2>
+          <p>Please login to see your order.</p>
 
-      <div class="empty-state__actions">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      </div>
-    </div>
-      <% } %>
+          <div class="empty-state__actions">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+          </div>
+        </div>
+        <% } %>
 
-      <% if (isLoggedIn && !hasOrders) { %>
-  <section class="orders-empty">
-  <div class="orders-visual">
-    <img src="assets/no-order.jpg" alt="no order">
-  </div>
+          <% if (isLoggedIn && !hasOrders) { %>
+            <section class="orders-empty">
+              <div class="orders-visual">
+                <img src="assets/no-order.jpg" alt="no order">
+              </div>
 
-  <div class="orders-content">
-    <h2>No orders yet</h2>
-    <p>You haven’t placed any orders.</p>
-    <div class="anchor-btn">
-      <a href="/store">Shop Now</a>
-    </div>
-  </div>
-</section>
+              <div class="orders-content">
+                <h2>No orders yet</h2>
+                <p>You haven’t placed any orders.</p>
+                <div class="anchor-btn">
+                  <a href="/store">Shop Now</a>
+                </div>
+              </div>
+            </section>
 
-<% } %>
+            <% } %>
 
-<% if (isLoggedIn && hasOrders) { %>
-  <section class="orders-list">
-    <h2>Your Orders</h2>
+              <% if (isLoggedIn && hasOrders) { %>
+                <section class="orders-list">
 
-    <% orders.forEach(order => { %>
-      <div class="order-card">
-        <p>Order ID: <%= order._id %></p>
-        <p>Items: <%= order.items.length %></p>
-      </div>
-    <% }) %>
-  </section>
-<% } %>
-      <%- include('../partials/burgerMenu') %>
-      <script src="/javascript/header.js"></script>
+                  <h2 class="orders-title">Your Orders</h2>
+
+                  <% orders.forEach(order=> { %>
+                    <% order.items.forEach(item=> { %>
+
+                      <div class="order-item-card">
+
+                        <!-- Product image -->
+                        <div class="order-item-image">
+                          <img src="<%= item.product?.image || '/assets/product.png' %>"
+                            alt="<%= item.product?.name || 'Product' %>" />
+                        </div>
+
+                        <!-- Product data -->
+                        <div class="order-item-data">
+                          <h3 class="order-item-name">
+                            <%= item.product?.name || 'Product unavailable' %>
+                          </h3>
+
+                          <p class="order-item-weight">
+                            <%= item.product?.weight || '' %>
+                          </p>
+
+                          <div class="order-item-meta">
+                            <span>Qty: <%= item.quantity %></span>
+                            <span>₹<%= item.total %></span>
+                          </div>
+
+                          <span class="order-status <%= item.status %>">
+                            <%= item.status %>
+                          </span>
+                        </div>
+
+                      </div>
+
+                      <% }) %>
+                        <% }) %>
+
+                </section>
+                <% } %>
+                  <%- include('../partials/burgerMenu') %>
+                    <script src="/javascript/header.js"></script>
 </body>
+
 </html>
