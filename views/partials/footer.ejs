@@ -1,7 +1,39 @@
 <footer class="site-footer">
   <style>
+    .footer{
+      background: #fdfbf7   ;
+    }
     .footer-logo {
       height: 2.8vh;
+    }
+    .footer-brand h2{
+      text-align: center;
+      font-size: 3vh;
+    }
+    .footer-intro{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+    .footer-brand{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .tagline{
+      font-family: var(--font-subtitle);
+      color: #5f443a;
+      font-size: 2.2vh;
+      font-weight: 600;
+    }
+    .footer-intro p{
+      width: 80vw;
+      font-family: var(--font-body);
+      text-align: center;
+      margin-top: 2vh;
+      color: #555;
+      
     }
 
     .site-footer {
@@ -14,10 +46,8 @@
 
     .footer-top {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 1rem;
       margin-top: 3vh;
     }
 
@@ -32,6 +62,15 @@
       text-align: center;
       font-family: var(--font-subtitle);
     }
+    /* Address */
+    .footer-address {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #5f443a;
+      margin-bottom: 10px;
+      padding-bottom: 2vh;
+      border-bottom: 1px solid #ccc;
+    }
 
     .footer-socials span {
       margin-right: 0.5rem;
@@ -41,8 +80,8 @@
 
     .footer-socials a {
       margin-left: 0.5rem;
-      color: #414664;
-      font-size: 1.2rem;
+      color: #5f443a;
+      font-size: 1.5rem;
       transition: color 0.3s;
     }
 
@@ -52,7 +91,7 @@
 
     /* Accordion */
     .footer-accordion {
-      margin-top: 0.1rem;
+      margin-top: 2.5vh;
     }
 
     .accordion-item {
@@ -68,7 +107,7 @@
       padding: 0.8rem;
       text-align: left;
       font-size: 1rem;
-      color: #414664;
+      color: #555;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -89,7 +128,7 @@
       font-family: var(--font-body);
       transition: max-height 0.4s ease, padding 0.4s ease;
       padding: 0 0.8rem;
-      color: #414664;
+      color: #555;
     }
 
     .accordion-item.active .accordion-content {
@@ -111,7 +150,7 @@
       justify-content: center;
       align-items: center;
       gap: 0.7rem;
-      
+
       margin: auto;
     }
 
@@ -168,13 +207,7 @@
     }
 
 
-    /* Address */
-    .footer-address {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: #414664;
-      margin-bottom: 10px;
-    }
+    
 
     .accordion-content p {
       margin-bottom: 0.8rem;
@@ -232,221 +265,242 @@
     }
   </style>
 
-  <div class="footer-accordion">
-    <div class="accordion-item">
-      <button class="accordion-header">
-        Return / Exchange Policy <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="accordion-content">
-        <p>
-        <ul style="list-style-type: circle; margin-left: 18px;">
-          <li>Exchange items within <a href="/return-policy">7 days of delivery</a>.</li>
-          <li>No cash refunds; exchanges allowed for equal or higher-value items.</li>
-          <li>Items must be unused and returned in original condition with accessories.</li>
-          <li>Damaged or incomplete items are not eligible for exchange.</li>
-          <li>Start exchanges easily on your <a href="/orders">My Orders</a> page.</li>
-        </ul>
-        </p>
+  <div id="footer">
+
+    <div class="footer-intro">
+      <div class="footer-brand">
+        <h2>Sweet Comb </h2>
+         <span class="tagline">Pure • Natural</span>
+      </div>
+      <p>
+        We work directly with independent beekeepers who manage their own hives
+        with care, ensuring pure and ethically harvested honey from hive to jar.
+      </p>
+
+    </div>
+
+    <div class="footer-top">
+
+      <!-- <img class="footer-logo" src="/images/cardLogo1.png" /> -->
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
 
-    <div class="accordion-item">
-      <button class="accordion-header">
-        Privacy Policy <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="accordion-content">
-        <p>
-          We value your privacy. Our website collects only your <strong>mobile number</strong>
-          , <strong>email address</strong> and <strong>delivery address</strong> during login or registration and for
-          order placement.
-        </p>
-        <ul>
-          <li><strong>Use:</strong> This information is used solely for authentication
-            and authorization through secure cookies.</li>
-          <li><strong>No Exploitation:</strong> We do not sell, rent, or share your data
-            with third parties.</li>
-          <li><strong>Security:</strong> Cookies are cleared automatically when you log out
-            or after inactivity.</li>
-        </ul>
-        <p>
-          By using our website, you agree that your details are used only
-          for secure login purposes.
-        </p>
-      </div>
+    <div class="footer-address">
+      <p>
+        <i class="fa-solid fa-location-dot"></i> Kariwala, Sirsa, Haryana,
+        125075
+      </p>
     </div>
 
-    <div class="accordion-item">
-      <button class="accordion-header">
-        Terms & Conditions <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="accordion-content">
-        <p>
-        <ul style="list-style-type: circle; margin-left: 18px;">
-          <li>By using Harish Mobile, you agree to our <a href="/terms">Terms & Conditions</a>.</li>
-          <li>All payments are processed securely via authorized gateways.</li>
-          <li>No fraudulent or illegal actions are tolerated.</li>
-          <li>Prices, offers, and availability may change without notice.</li>
-          <li>Cookies and data policies are detailed in our <a href="/policies">Privacy & Cookie Policy</a>.</li>
-        </ul>
-        </p>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-header">
-        Cookie Policy <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="accordion-content">
-        <p>
-          We use cookies only for authentication and authorization purposes.
-          These cookies are essential to keep you securely logged in and to
-          ensure that only authorized users can access protected areas of our
-          website.
-        </p>
-        <ul>
-          <li>No tracking or advertising cookies are used.</li>
-          <li>No third-party cookies are stored.</li>
-          <li>
-            Cookies do not contain personal information — only a secure session
-            ID and some user data.
-          </li>
-          <li>
-            They expire automatically when you log out or after inactivity.
-          </li>
-        </ul>
-        <p>
-          Disabling cookies in your browser may prevent you from logging in or
-          using secure features of the site.
-        </p>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-header">
-        Help & Support <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="accordion-content">
-        <p>If you need assistance, you can reach us directly through:</p>
-        <ul class="support-list">
-          <li>
-            <a href="https://wa.me/918572002626" target="_blank">
-              <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-          </li>
-          <li>
-            <a href="mailto:harishmobile49@gmail.com">
-              <i class="fas fa-envelope"></i> Email
-            </a>
-          </li>
-          <li>
-            <a href="tel:8572002626">
-              <i class="fas fa-phone-alt"></i> Phone
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <button class="accordion-header">
-        FAQ <i class="fas fa-chevron-down"></i>
-      </button>
-      <div class="accordion-content">
-        <div class="faq-item">
-          <h4>Q1: What should I do if I receive a damaged product?</h4>
-          <p>Ans: Report the damaged item within 24 hours via our <a href="/contact">Contact Page</a>. Do not use the
-            product. We will arrange a priority exchange or replacement at no extra cost. See our <a
-              href="/return-policy">Return Policy</a> for more details.</p>
+    <div class="footer-accordion">
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Return / Exchange Policy <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>
+          <ul style="list-style-type: circle; margin-left: 18px;">
+            <li>Exchange items within <a href="/return-policy">7 days of delivery</a>.</li>
+            <li>No cash refunds; exchanges allowed for equal or higher-value items.</li>
+            <li>Items must be unused and returned in original condition with accessories.</li>
+            <li>Damaged or incomplete items are not eligible for exchange.</li>
+            <li>Start exchanges easily on your <a href="/orders">My Orders</a> page.</li>
+          </ul>
+          </p>
         </div>
+      </div>
 
-        <div class="faq-item">
-          <h4>Q2: How do I initiate an exchange if the product doesn’t fit or meet my expectations?</h4>
-          <p>Ans: Initiate the exchange through your <a href="/orders">My Orders</a> page within 7 days of delivery. The
-            product must be unused and in original condition. Exchanges are allowed only for products of equal or higher
-            value. No cash refunds.</p>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Privacy Policy <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>
+            We value your privacy. Our website collects only your <strong>mobile number</strong>
+            , <strong>email address</strong> and <strong>delivery address</strong> during login or registration and for
+            order placement.
+          </p>
+          <ul>
+            <li><strong>Use:</strong> This information is used solely for authentication
+              and authorization through secure cookies.</li>
+            <li><strong>No Exploitation:</strong> We do not sell, rent, or share your data
+              with third parties.</li>
+            <li><strong>Security:</strong> Cookies are cleared automatically when you log out
+              or after inactivity.</li>
+          </ul>
+          <p>
+            By using our website, you agree that your details are used only
+            for secure login purposes.
+          </p>
         </div>
+      </div>
 
-        <div class="faq-item">
-          <h4>Q3: How can I track my order status?</h4>
-          <p>Ans: After shipping, tracking information is available on your <a href="/orders">My Orders</a> page. You
-            will also receive updates by SMS and email to monitor delivery progress.</p>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Terms & Conditions <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>
+          <ul style="list-style-type: circle; margin-left: 18px;">
+            <li>By using Harish Mobile, you agree to our <a href="/terms">Terms & Conditions</a>.</li>
+            <li>All payments are processed securely via authorized gateways.</li>
+            <li>No fraudulent or illegal actions are tolerated.</li>
+            <li>Prices, offers, and availability may change without notice.</li>
+            <li>Cookies and data policies are detailed in our <a href="/policies">Privacy & Cookie Policy</a>.</li>
+          </ul>
+          </p>
         </div>
+      </div>
 
-        <div class="faq-item">
-          <h4>Q4: Who do I contact if I face issues with payment or login?</h4>
-          <p>Ans: For payment issues, first check with your bank for authorization. If the problem persists, contact our
-            support via the <a href="/contact">Contact Page</a> for assistance. For login issues, use the password reset
-            option or contact support.</p>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Cookie Policy <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>
+            We use cookies only for authentication and authorization purposes.
+            These cookies are essential to keep you securely logged in and to
+            ensure that only authorized users can access protected areas of our
+            website.
+          </p>
+          <ul>
+            <li>No tracking or advertising cookies are used.</li>
+            <li>No third-party cookies are stored.</li>
+            <li>
+              Cookies do not contain personal information — only a secure session
+              ID and some user data.
+            </li>
+            <li>
+              They expire automatically when you log out or after inactivity.
+            </li>
+          </ul>
+          <p>
+            Disabling cookies in your browser may prevent you from logging in or
+            using secure features of the site.
+          </p>
         </div>
+      </div>
 
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Help & Support <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+          <p>If you need assistance, you can reach us directly through:</p>
+          <ul class="support-list">
+            <li>
+              <a href="https://wa.me/918572002626" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href="mailto:harishmobile49@gmail.com">
+                <i class="fas fa-envelope"></i> Email
+              </a>
+            </li>
+            <li>
+              <a href="tel:8572002626">
+                <i class="fas fa-phone-alt"></i> Phone
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          FAQ <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+          <div class="faq-item">
+            <h4>Q1: What should I do if I receive a damaged product?</h4>
+            <p>Ans: Report the damaged item within 24 hours via our <a href="/contact">Contact Page</a>. Do not use the
+              product. We will arrange a priority exchange or replacement at no extra cost. See our <a
+                href="/return-policy">Return Policy</a> for more details.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Q2: How do I initiate an exchange if the product doesn’t fit or meet my expectations?</h4>
+            <p>Ans: Initiate the exchange through your <a href="/orders">My Orders</a> page within 7 days of delivery.
+              The
+              product must be unused and in original condition. Exchanges are allowed only for products of equal or
+              higher
+              value. No cash refunds.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Q3: How can I track my order status?</h4>
+            <p>Ans: After shipping, tracking information is available on your <a href="/orders">My Orders</a> page. You
+              will also receive updates by SMS and email to monitor delivery progress.</p>
+          </div>
+
+          <div class="faq-item">
+            <h4>Q4: Who do I contact if I face issues with payment or login?</h4>
+            <p>Ans: For payment issues, first check with your bank for authorization. If the problem persists, contact
+              our
+              support via the <a href="/contact">Contact Page</a> for assistance. For login issues, use the password
+              reset
+              option or contact support.</p>
+          </div>
+
+        </div>
       </div>
     </div>
+
+    
+
+    <% if (!isDetailPage) { %>
+      <div class="footer-payment">
+        <div class="payment-container">
+          <img id="visa-logo" src="/assets/visa.png" alt="Visa">
+          <img id="mastercard-logo" src="/assets/mastercard.png" alt="Mastercard">
+          <img id="rupay-logo" src="/assets/rupay.jpeg" alt="RuPay">
+          <img id="upi-logo" src="/assets/upi.jpeg" alt="UPI">
+          <img id="paytm-logo" src="/assets/Paytm-logo.png" alt="Paytm">
+          <img id="phonepe-logo" src="/assets/phonepe.png" alt="PhonePe">
+          <img id="gpay-logo" src="/assets/gpay.png" alt="Google Pay">
+          <img id="amazonpay-logo" src="/assets/amazonpay.png" alt="Amazon Pay">
+          <!-- <img id="emi-logo" src="/images/accounting.png" alt="EMI"> -->
+          <img id="netbanking-logo" src="/assets/net-banking.jpeg" alt="Net Banking">
+        </div>
+      </div>
+      <% } %>
   </div>
 
-  <div class="footer-top">
-    <h3>SWEET COMB</h3>
-    <!-- <img class="footer-logo" src="/images/cardLogo1.png" /> -->
-    <div class="footer-socials">
-      <span>Follow us:</span>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> Sweet Comb. All rights reserved.</p>
   </div>
 
-  <div class="footer-address">
-    <p>
-      <i class="fa-solid fa-location-dot"></i> Kariwala, Sirsa, Haryana,
-      125075
-    </p>
-  </div>
+  <script>
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <% if (!isDetailPage) { %>
-    <div class="footer-payment">
-      <div class="payment-container">
-        <img id="visa-logo" src="/assets/visa.png" alt="Visa">
-        <img id="mastercard-logo" src="/assets/mastercard.png" alt="Mastercard">
-        <img id="rupay-logo" src="/assets/rupay.jpeg" alt="RuPay">
-        <img id="upi-logo" src="/assets/upi.jpeg" alt="UPI">
-        <img id="paytm-logo" src="/assets/Paytm-logo.png" alt="Paytm">
-        <img id="phonepe-logo" src="/assets/phonepe.png" alt="PhonePe">
-        <img id="gpay-logo" src="/assets/gpay.png" alt="Google Pay">
-        <img id="amazonpay-logo" src="/assets/amazonpay.png" alt="Amazon Pay">
-        <!-- <img id="emi-logo" src="/images/accounting.png" alt="EMI"> -->
-        <img id="netbanking-logo" src="/assets/net-banking.jpeg" alt="Net Banking">
-      </div>
-    </div>
-    <% } %>
+    document.querySelectorAll(".accordion-header").forEach((header) => {
+      header.addEventListener("click", () => {
+        const item = header.parentElement;
+        const content = header.nextElementSibling;
+        const allItems = document.querySelectorAll(".accordion-item");
 
-      <div class="footer-bottom">
-        <p>© <span id="year"></span> Sweet Comb. All rights reserved.</p>
-      </div>
-
-      <script>
-        // Dynamic year
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        document.querySelectorAll(".accordion-header").forEach((header) => {
-          header.addEventListener("click", () => {
-            const item = header.parentElement;
-            const content = header.nextElementSibling;
-            const allItems = document.querySelectorAll(".accordion-item");
-
-            // close others
-            allItems.forEach((i) => {
-              if (i !== item) {
-                i.classList.remove("active");
-                i.querySelector(".accordion-content").style.maxHeight = null;
-              }
-            });
-
-            // toggle current
-            item.classList.toggle("active");
-            if (item.classList.contains("active")) {
-              content.style.maxHeight = content.scrollHeight + "px"; // 👈 auto height
-            } else {
-              content.style.maxHeight = null;
-            }
-          });
+        // close others
+        allItems.forEach((i) => {
+          if (i !== item) {
+            i.classList.remove("active");
+            i.querySelector(".accordion-content").style.maxHeight = null;
+          }
         });
-      </script>
+
+        // toggle current
+        item.classList.toggle("active");
+        if (item.classList.contains("active")) {
+          content.style.maxHeight = content.scrollHeight + "px"; // 👈 auto height
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
 </footer>
