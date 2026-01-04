@@ -1,54 +1,62 @@
 <footer class="site-footer">
   <style>
-    .footer{
-      background: #fdfbf7   ;
+    #footer {
+      background: #fdfbf7;
+      padding-top: 2vh;
     }
+
     .footer-logo {
       height: 2.8vh;
     }
-    .footer-brand h2{
+
+    .footer-brand h2 {
       text-align: center;
       font-size: 3vh;
     }
-    .footer-intro{
+
+    .footer-intro {
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+
     }
-    .footer-brand{
+
+    .footer-brand {
       display: flex;
       align-items: center;
       flex-direction: column;
     }
-    .tagline{
+
+    .tagline {
       font-family: var(--font-subtitle);
       color: #5f443a;
       font-size: 2.2vh;
       font-weight: 600;
     }
-    .footer-intro p{
+
+    .footer-intro p {
       width: 80vw;
       font-family: var(--font-body);
       text-align: center;
       margin-top: 2vh;
       color: #555;
-      
+
     }
 
     .site-footer {
       background: #ffffff;
       color: #414664;
-      padding: 1vh 4vw;
+      margin: 1vh 4vw;
       font-family: var(--font-subtitle);
       padding-bottom: 0;
     }
 
-    .footer-top {
+    .footer-socials {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 3vh;
+      gap: 3vw;
     }
 
     .footer-address i {
@@ -62,11 +70,12 @@
       text-align: center;
       font-family: var(--font-subtitle);
     }
+
     /* Address */
     .footer-address {
       margin-top: 1rem;
       font-size: 0.9rem;
-      color: #5f443a;
+      color: #555;
       margin-bottom: 10px;
       padding-bottom: 2vh;
       border-bottom: 1px solid #ccc;
@@ -80,7 +89,7 @@
 
     .footer-socials a {
       margin-left: 0.5rem;
-      color: #5f443a;
+      color: #555;
       font-size: 1.5rem;
       transition: color 0.3s;
     }
@@ -150,7 +159,6 @@
       justify-content: center;
       align-items: center;
       gap: 0.7rem;
-
       margin: auto;
     }
 
@@ -206,16 +214,13 @@
       height: 36px;
     }
 
-
-    
-
     .accordion-content p {
       margin-bottom: 0.8rem;
     }
 
     .accordion-content ul {
       margin: 0.5rem 0 0.8rem 1.2rem;
-      padding-left: 0.8rem;
+      
       list-style-type: disc;
     }
 
@@ -270,7 +275,7 @@
     <div class="footer-intro">
       <div class="footer-brand">
         <h2>Sweet Comb </h2>
-         <span class="tagline">Pure • Natural</span>
+        <span class="tagline">Pure • Natural</span>
       </div>
       <p>
         We work directly with independent beekeepers who manage their own hives
@@ -287,13 +292,14 @@
         <a href="#"><i class="fab fa-facebook"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
-    </div>
 
-    <div class="footer-address">
-      <p>
-        <i class="fa-solid fa-location-dot"></i> Kariwala, Sirsa, Haryana,
-        125075
-      </p>
+
+      <div class="footer-address">
+        <p>
+          <i class="fa-solid fa-location-dot"></i> Kariwala, Sirsa, Haryana,
+          125075
+        </p>
+      </div>
     </div>
 
     <div class="footer-accordion">
@@ -451,7 +457,7 @@
       </div>
     </div>
 
-    
+
 
     <% if (!isDetailPage) { %>
       <div class="footer-payment">

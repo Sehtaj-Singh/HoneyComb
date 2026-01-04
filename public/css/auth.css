@@ -1,5 +1,5 @@
-.register-image{
-  background: url("/assets/register.jpg")center/cover no-repeat;
+.register-image {
+  background: url("/assets/register.jpg") center/cover no-repeat;
   width: 100vw;
   position: relative;
   aspect-ratio: 2601/1793;
@@ -14,8 +14,8 @@
   z-index: 1;
 }
 
-.login-image{
-  background: url("/assets/login-top.jpg")center/cover no-repeat;
+.login-image {
+  background: url("/assets/login-top.jpg") center/cover no-repeat;
   width: 100vw;
   position: relative;
   aspect-ratio: 2601/1793;
@@ -30,60 +30,67 @@
   z-index: 1;
 }
 
-.image-inner{
+.image-inner {
   position: absolute;
   z-index: 3;
   bottom: 10vh;
   width: 100vw;
 }
-.image-inner h2{
- color: white;
- letter-spacing: 2px;
- font-size: 3.5vh;
- text-align: center;
- font-family: var(--font-title);
+.image-inner h2 {
+  color: white;
+  letter-spacing: 2px;
+  font-size: 3.5vh;
+  text-align: center;
+  font-family: var(--font-title);
 }
 
-.image-inner p{
- color: white;
- text-align: center;
- margin-top: 3vh;
- font-size: 2.5vh;
- font-family: var(--font-subtitle);
+.image-inner p {
+  color: white;
+  text-align: center;
+  margin-top: 3vh;
+  font-size: 2.5vh;
+  font-family: var(--font-subtitle);
 }
 
-#title{
-color: #414664;
-font-family: var(--font-title);
-font-size: 4vh;
-letter-spacing: 3px;
-margin-bottom: 3vh;
+#title {
+  color: #414664;
+  font-family: var(--font-title);
+  font-size: 4vh;
+  letter-spacing: 3px;
+  margin-bottom: 3vh;
 }
 
-#registerForm{
+#title-Login {
+  color: #414664;
+  font-family: var(--font-title);
+  font-size: 4vh;
+  letter-spacing: 3px;
+  margin-top: 2vh;
+  margin-bottom: 4vh;
+}
+
+#registerForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top:2vh ;
+  margin-top: 2vh;
 }
 
-#loginForm{
+#loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top:2vh ;
+  margin-top: 2vh;
 }
 
-.btn-login{
-  
-}
+
 
 /* INPUTS */
 .input {
   width: 70vw;
   margin-bottom: 2vh;
   padding: 1.5vh 3vw;
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   font-size: 1.8vh;
   color: #5f443a;
   background: #fff;
@@ -92,6 +99,10 @@ margin-bottom: 3vh;
   outline: none;
   transition: ease 0.25s;
   box-shadow: 2.5px 3px 0 #5f443a;
+}
+
+.input-login {
+  margin-bottom: 3vh;
 }
 
 .input::placeholder {
@@ -107,19 +118,22 @@ margin-bottom: 3vh;
 .auth-btn {
   margin-top: 17px;
   padding: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   background: #d89a2b;
   color: #fff;
   border: none;
   border-radius: 12px;
   cursor: pointer;
+  background: linear-gradient(135deg, #f2c14e 0%, #d89a2b 45%, #b77f1f 100%);
+  box-shadow: inset 1px 1px 5px rgba(255, 255, 255, 0.5),
+    3px 3px 10px rgba(216, 154, 43, 0.5);
 }
 
 /* LOGIN SWITCH */
 .auth-switch {
   margin-top: 20px;
-  font-family: 'Inika', serif;
+  font-family: "Inika", serif;
   color: #5f443a;
   font-size: 17px;
 }
@@ -133,7 +147,6 @@ margin-bottom: 3vh;
 
 /* PHONE FIELD */
 
-
 /* wrapper */
 .phone-input {
   display: flex;
@@ -145,7 +158,7 @@ margin-bottom: 3vh;
 /* +91 inside input */
 .country-code {
   padding: 1.8vh 3vw;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   width: 6vw;
   font-size: 1.8vh;
   color: #414664;
@@ -156,10 +169,10 @@ margin-bottom: 3vh;
 /* phone input spacing */
 .phone-number {
   width: 64vw;
-  padding-left:12vw;
-  padding-top: 2vh ;
+  padding-left: 12vw;
+  padding-top: 2vh;
   padding-bottom: 2vh;
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   font-size: 1.8vh;
   color: #5f443a;
   background: #fff;
@@ -172,4 +185,93 @@ margin-bottom: 3vh;
 
 .phone-number:focus {
   box-shadow: 5.5px 7px 0 #5f443a;
+}
+
+@media (min-width: 768px) {
+  .register-image {
+    width: 80vw;
+    margin-top: 3vh;
+    margin-left: 10vw;
+  }
+  .login-image {
+    width: 80vw;
+    margin-top: 3vh;
+    margin-left: 10vw;
+  }
+
+  .image-inner {
+    width: 80vw;
+  }
+  .input {
+    width: 60vw;
+  }
+  .phone-number {
+    width: 54vw;
+  }
+  .phone-input {
+    margin-left: 10vw;
+  }
+  .auth-btn {
+    padding: 18px 24px;
+    font-size: 1.4rem;
+  }
+  .auth-switch {
+    font-size: 24px;
+    margin-top: 30px;
+  }
+  .auth-switch a {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-login {
+    display: flex;
+    padding: 10vh 0;
+    margin-top: 5vh;
+  }
+  .auth-register{
+    display: flex;
+    padding: 10vh 0;
+    margin-top: 5vh;
+  }
+  .register-image {
+    width: 50vw;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .image-inner {
+    width: 50vw;
+  }
+  .login-image {
+    width: 50vw;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .login-image {
+    width: 50vw;
+  }
+  #loginForm {
+    width: 50vw;
+  }
+  #registerForm {
+    width: 50vw;
+    margin-top: 0;
+  }
+  .input {
+    width: 30vw;
+  }
+  .phone-input{
+    width: 50vw;
+    margin-left: 0vw;
+  }
+  .phone-number {
+    width: 30vw;
+    padding-left: 6vw;
+  }
+  .country-code{
+    padding: 1.8vh 1vw;
+    transform: translatex(8vw);
+    width: 5vw;
+  }
 }
