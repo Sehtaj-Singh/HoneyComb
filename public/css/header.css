@@ -209,6 +209,136 @@
   pointer-events: auto;
 }
 
+/* =====================================================
+   BURGER / MENU BUTTON (HEADER)
+   ===================================================== */
+
+.icon-btn.menu-btn {
+  color: #2563eb; /* blue */
+  font-size: 1.4rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.icon-btn.menu-btn:hover {
+  color: #1e40af;
+}
+
+/* =====================================================
+   SIDE MODAL CONTAINER
+   ===================================================== */
+
+.page-aside {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 78vw;
+  max-width: 320px;
+  height: 100vh;
+  z-index: 1200;
+  background: #ffffff;
+  box-shadow: -6px 0 18px rgba(0, 0, 0, 0.18);
+  transition: right 0.3s ease;
+}
+
+/* active state */
+.page-aside.active {
+  right: 0;
+}
+
+/* =====================================================
+   INNER WRAPPER
+   ===================================================== */
+
+.aside-inner {
+  height: 100%;
+  padding: 3vh 5vw;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================================
+   CLOSE BUTTON
+   ===================================================== */
+
+.aside-close {
+  align-self: flex-end;
+
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+
+  color: #414664;
+}
+
+.aside-close:hover {
+  color: #2563eb;
+}
+
+/* =====================================================
+   ASIDE TITLE
+   ===================================================== */
+
+.aside-inner h3 {
+  margin: 2vh 0 3vh;
+  padding-left: 8px;
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+
+  color: #414664;
+}
+
+/* =====================================================
+   NAV LINKS
+   ===================================================== */
+
+.aside-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-nav a {
+  font-family: "inika", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  
+
+  text-decoration: none;
+  color: #5f443a;
+
+  padding: 14px 8px;
+  border-bottom: 1px solid #e6e6e6; /* grey divider */
+
+  transition: color 0.2s ease, padding-left 0.2s ease,
+              background 0.2s ease;
+}
+
+.aside-nav a:hover {
+  color: #3f2b24;
+  padding-left: 6px;
+  background: rgba(95, 68, 58, 0.04);
+}
+
+/* last item no border */
+.aside-nav a:last-child {
+  border-bottom: none;
+}
+
+/* =====================================================
+   OPTIONAL ACTIVE LINK
+   ===================================================== */
+
+.aside-nav a.active {
+  color: #2563eb;
+}
+
+
 
 /* =====================================================
    BOTTOM NAV (MOBILE)

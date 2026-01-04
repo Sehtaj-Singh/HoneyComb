@@ -44,30 +44,7 @@
   </div>
 </div>
 
-<!-- SIDE MENU MODAL -->
-<div class="side-menu" id="sideMenu">
-  <div class="side-menu-inner">
 
-    <button class="close-btn" aria-label="Close menu">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-
-    <nav class="side-nav">
-      <a href="/">Home</a>
-      <a href="/products">Products</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/process">Our Process</a>
-
-      <% if (!locals.user) { %>
-        <a href="/login">Login</a>
-      <% } else { %>
-        <a href="/account">My Account</a>
-        <a href="/logout">Logout</a>
-      <% } %>
-    </nav>
-
-  </div>
-</div>
 
 <!-- BOTTOM NAV -->
 <div id="lowerHeader">
