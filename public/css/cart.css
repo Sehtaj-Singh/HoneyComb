@@ -59,7 +59,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 1.8vh 0;
-  background-color: #f5f7f8;
+  background-color: #faf6ef;
   padding-left: 3vw;
   border-bottom-left-radius: 14px;
   border-top-left-radius: 14px;
@@ -114,20 +114,20 @@ body {
 
 .cart-item-name {
   font-family: var(--font-subtitle);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #5f443a;
 }
 
 .cart-item-weight {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: var(--font-button);
   color: #5f443a;
 }
 
 .cart-item-price {
   font-family: var(--font-title);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #4a3b2a;
 }
@@ -156,6 +156,7 @@ body {
     #d32f2f 50%,
     #b71c1c 100%
   );
+  letter-spacing: 1px;
 
   /* subtle depth */
   box-shadow:
@@ -211,7 +212,7 @@ body {
   bottom: 0;
   left: 0;
   width: 92vw;
-  height: 7vh;
+  height: 9vh;
   background: #ffffff;
   border-top: 1px solid #e0e0e0;
   display: flex;
@@ -243,16 +244,32 @@ body {
 
 /* BUTTON */
 .checkout-btn {
-  background: #5f443a;
-  color: #fff;
-  letter-spacing: 1px;
+  color: #ffffff;
   font-family: var(--font-button);
-  border: none;
-  border-radius: 10px;
-  padding: 1.1vh 7vw;
-  font-size: 0.9rem;
   font-weight: 600;
+  font-size: 1rem;
+  padding: 1.5vh 7vw;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  border: none;
   cursor: pointer;
+
+  background: linear-gradient(
+    90deg,
+    #7f6359 0%,
+    #6a4f45 45%,
+    #564039 100%
+  );
+
+  box-shadow:
+    0 2px 10px rgba(47, 29, 23, 0.35);
+
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+.checkout-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 6px rgba(47, 29, 23, 0.35);
 }
 
 /* =========================================
@@ -274,8 +291,8 @@ body {
   #564039 100%
 );
 
-    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.5),
-    inset 3px 3px 10px rgba(148, 148, 148, 0.6);
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4),
+    inset 3px 3px 10px rgba(148, 148, 148, 0.5);
 
   display: flex;
   align-items: center;              /* ✅ center icon & button */
@@ -335,8 +352,8 @@ body {
 
   /* 🧊 Neumorphism shadows */
   box-shadow:
-    2px 2px 8px rgba(0, 0, 0, 0.4),
-    -2px -2px 8px rgba(255, 255, 255, 0.4);
+    2px 2px 8px rgba(0, 0, 0, 0.6),
+    -2px -2px 8px rgba(255, 255, 255, 0.3);
 
   transition: box-shadow 0.2s ease, transform 0.1s ease;
 }
