@@ -88,9 +88,154 @@
    ORDERS LIST (HAS ORDERS)
    ===================================================== */
 
+/* =====================================================
+   ORDERS LIST (HAS ORDERS STATE)
+   ===================================================== */
+
 .orders-list {
   padding: 4vh 4vw 8vh;
-  
+}
+
+/* =====================================================
+   ORDER WRAPPER (CARD + ACTION SECTION)
+   ===================================================== */
+
+.order-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2vh;
+}
+
+/* =====================================================
+   TOP CARD (PRODUCT INFO)
+   ===================================================== */
+
+.order-item-card {
+  display: flex;
+  gap: 4vw;
+  padding: 14px;
+
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+}
+
+/* product image */
+.order-item-image img {
+  width: 22vw;
+  max-width: 90px;
+  object-fit: contain;
+}
+
+/* product data */
+.order-item-data {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.order-item-name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: #414664;
+}
+
+.order-item-weight {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #5f443a;
+}
+
+/* qty + price (COLUMN FIX) */
+.order-item-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #4a3b2a;
+}
+
+/* =====================================================
+   ACTION / STATUS SECTION
+   ===================================================== */
+
+.order-item-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+  background: #ffffff;
+
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+}
+
+/* status */
+.order-status {
+  font-family: var(--font-button);
+  font-size: 13px;
+  text-transform: capitalize;
+}
+/* wrapper */
+.order-status {
+  font-family: var(--font-button);
+  font-size: 13px;
+}
+
+/* label stays neutral */
+.status-label {
+  color: #555;
+  margin-right: 4px;
+}
+
+/* value colors */
+.status-value.pending {
+  color: #b08900;
+}
+
+.status-value.shipped {
+  color: #0b5ed7;
+}
+
+.status-value.delivered {
+  color: #198754;
+}
+
+.status-value.cancelled {
+  color: #dc3545;
+}
+
+/* tracking link */
+.track-link {
+  font-family: var(--font-button);
+  font-size: 13px;
+  color: #414664;
+  text-decoration: none;
+}
+
+.track-link:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   DESKTOP ADJUSTMENTS
+   ===================================================== */
+
+@media (min-width: 1024px) {
+  .orders-list {
+    max-width: 720px;
+    margin: auto;
+  }
+
+  .order-item-image img {
+    max-width: 110px;
+  }
 }
 
 .orders-title {
@@ -101,86 +246,6 @@
   margin-bottom: 3vh;
 }
 
-/* Order item card */
-
-.order-item-card {
-  display: flex;
-  gap: 4vw;
-  padding: 14px;
-  margin-bottom: 2vh;
-
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 14px;
-}
-
-/* Image */
-
-.order-item-image img {
-  width: 22vw;
-  max-width: 90px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Data */
-
-.order-item-data {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.order-item-name {
-  font-family: var(--font-title);
-  font-size: 16px;
-  color: #414664;
-  margin: 0;
-}
-
-.order-item-weight {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: #5f443a;
-}
-
-/* Meta row */
-
-.order-item-meta {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: #4a3b2a;
-}
-
-/* Status badge */
-
-.order-status {
-  margin-top: 4px;
-  font-size: 12px;
-  font-family: var(--font-button);
-  text-transform: capitalize;
-}
-
-/* Status colors */
-
-.order-status.pending {
-  color: #b08900;
-}
-
-.order-status.shipped {
-  color: #0b5ed7;
-}
-
-.order-status.delivered {
-  color: #198754;
-}
-
-.order-status.cancelled {
-  color: #dc3545;
-}
 
 /* =====================================================
    DESKTOP (LIGHT ENHANCEMENT ONLY)
@@ -199,7 +264,7 @@
 
 
 /* =====================================================
-   DESKTOP REFINEMENT
+   tab REFINEMENT
    ===================================================== */
 
 @media (min-width: 768px) {

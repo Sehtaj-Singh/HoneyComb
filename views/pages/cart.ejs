@@ -57,7 +57,7 @@
           <!-- STATE 3: LOGGED IN, CART HAS ITEMS -->
           <section class="cart-page">
 
-            <h1>YOUR CART</h1>
+            <h2 id="cart-title">YOUR CART</h2>
 
             <div class="cart-layout">
 
@@ -67,7 +67,10 @@
                 <!-- DELIVERY ADDRESS (only if exists) -->
                 <% if (hasAddress && address) { %>
                   <div class="cart-address">
-                    <div class="cart-address-label">Deliver to</div>
+                    <div class="cart-address-icon">
+                     <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    
 
                     <div class="cart-address-content">
                       <strong>

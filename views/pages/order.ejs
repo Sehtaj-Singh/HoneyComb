@@ -51,45 +51,59 @@
 
               <% if (isLoggedIn && hasOrders) { %>
                 <section class="orders-list">
-
                   <h2 class="orders-title">Your Orders</h2>
 
                   <% orders.forEach(order=> { %>
                     <% order.items.forEach(item=> { %>
 
-                      <div class="order-item-card">
+                      <div class="order-wrapper">
 
-                        <!-- Product image -->
-                        <div class="order-item-image">
-                          <img src="<%= item.product?.image || '/assets/product.png' %>"
-                            alt="<%= item.product?.name || 'Product' %>" />
-                        </div>
-
-                        <!-- Product data -->
-                        <div class="order-item-data">
-                          <h3 class="order-item-name">
-                            <%= item.product?.name || 'Product unavailable' %>
-                          </h3>
-
-                          <p class="order-item-weight">
-                            <%= item.product?.weight || '' %>
-                          </p>
-
-                          <div class="order-item-meta">
-                            <span>Qty: <%= item.quantity %></span>
-                            <span>₹<%= item.total %></span>
+                        <!-- TOP: PRODUCT CARD -->
+                        <div class="order-item-card">
+                          <div class="order-item-image">
+                            <img src="<%= item.product?.image || '/assets/product.png' %>"
+                              alt="<%= item.product?.name || 'Product' %>" />
                           </div>
 
-                          <span class="order-status <%= item.status %>">
-                            <%= item.status %>
+                          <div class="order-item-data">
+                            <h3 class="order-item-name">
+                              <%= item.product?.name || 'Product unavailable' %>
+                            </h3>
+
+                            <p class="order-item-weight">
+                              <%= item.product?.weight || '' %>
+                            </p>
+
+                            <div class="order-item-meta">
+                              <span>Qty: <%= item.quantity %></span>
+                              <span>₹<%= item.total %></span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- BOTTOM: STATUS / ACTIONS -->
+                        <div class="order-item-actions">
+
+                          <span class="order-status">
+                            <span class="status-label">Status :</span>
+                            <span class="status-value <%= item.status %>">
+                              <%= item.status %>
+                            </span>
                           </span>
+
+
+                          <% if (item.trackingUrl) { %>
+                            <a href="<%= item.trackingUrl %>" target="_blank" class="track-link">
+                              Track Order
+                            </a>
+                            <% } %>
+
                         </div>
 
                       </div>
 
                       <% }) %>
                         <% }) %>
-
                 </section>
                 <% } %>
                   <%- include('../partials/burgerMenu') %>

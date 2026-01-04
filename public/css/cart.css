@@ -2,15 +2,12 @@
    CART PAGE – BASE
    ===================================================== */
 
- body{
+body {
   margin-bottom: 7vh;
- } 
-
-.cart-page {
-  padding: 14px;
-   padding-bottom: 8vh;
 }
- 
+
+
+
 .cart-page h1 {
   font-size: 1.5rem;
   margin-bottom: 16px;
@@ -33,12 +30,20 @@
    CART ITEM CARD
    ===================================================== */
 
+#cart-title {
+  font-family: var(--font-title); /* Oswald */
+  font-size: 4vh;
+  margin-top: 3vh;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #414664;
+  margin-bottom: 3vh;
+}
 .cart-item {
-  width: 94%;
-  margin: auto;
+  width: 94vw;
   display: flex;
   gap: 14px;
-  padding: 14px;
+  margin-left: 3vw;
   border: 1px solid #e2e2e2; /* soft grey border */
   border-radius: 14px;
   background: #ffffff;
@@ -53,18 +58,22 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  padding: 1.8vh 0;
+  background-color: #f5f7f8;
+  padding-left: 3vw;
+  border-bottom-left-radius: 14px;
+  border-top-left-radius: 14px;
 }
 
 .cart-item-image {
   width: 40vw;
-  background: #f5f7f8; 
+  background: #f5f7f8;
   border-radius: 10px;
 }
 
-.cart-item-image
- img{
-  width: 90% ;
- }
+.cart-item-image img {
+  width: 90%;
+}
 /* Quantity UI (static for now) */
 .cart-qty {
   display: flex;
@@ -211,56 +220,98 @@
 }
 
 /* =========================================
-   CART ADDRESS SECTION
+   CART ADDRESS SECTION (FIXED)
    ========================================= */
 
 .cart-address {
-  width: 94%;
-  margin: auto;
-  margin-bottom: 14px;
-  padding: 14px;
-  border: 1px solid #e0e0e0;
+  width: 90vw;
+  margin-left: 2vw;
+  padding: 1.5vh 3vw;
+  margin-bottom: 3vh;
+
   border-radius: 14px;
-  background: #ffffff;
+
+  /* dark gradient */
+  background: linear-gradient(
+  90deg,
+  #74584e 0%,
+  #5f443a 50%,
+  #3f2b24 100%
+);
+
+  box-shadow:
+    0 3px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;              /* ✅ center icon & button */
   gap: 12px;
 }
-
-.cart-address-label {
-  font-size: 0.75rem;
-  color: #5f443a;
-  margin-bottom: 4px;
+.cart-address-icon{
+  display: flex;
+  height: 4vh;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1vw;
+}
+.cart-address-icon i {
+  font-size: 3vh;
+  color: #fff;
+  
 }
 
 .cart-address-content {
-  flex: 1;
+  max-width: 55vw;                  /* ✅ fixed readable width */
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-body);
+  letter-spacing: 1px;
+}
+
+.cart-address-content strong {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-family: var(--font-subtext);
 }
 
 .cart-address-content p {
-  font-size: 0.85rem;
-  color: #4a3b2a;
+  margin: 0;
+  font-size: 1rem;
   line-height: 1.4;
+  color: #f7f3f1;
+
+  word-wrap: break-word;             /* ✅ wrap long text */
+  overflow-wrap: break-word;
 }
 
+
 .change-address-btn {
-  background: none;
-  border: none;
-  color: #5f443a;
+  font-family: var(--font-button);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-}
 
+  padding: 1vh 3vw;
+  border-radius: 12px;
+  border: none;
+
+  color: #5f443a;
+  background: #ffffff;
+
+  /* 🧊 Neumorphism shadows */
+  box-shadow:
+    2px 2px 8px rgba(0, 0, 0, 0.4),
+    -2px -2px 8px rgba(255, 255, 255, 0.4);
+
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
 
 /* =====================================================
    DESKTOP VIEW
    ===================================================== */
 
 @media (min-width: 1024px) {
-
   .cart-layout {
     flex-direction: row;
     align-items: flex-start;

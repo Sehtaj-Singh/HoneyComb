@@ -187,6 +187,51 @@
   box-shadow: 5.5px 7px 0 #5f443a;
 }
 
+
+
+/* container */
+.password-field {
+  display: flex;
+  position: relative;
+  width: 100vw;
+}
+
+/* input */
+.password-field .input {
+  margin-left: 12vw;
+  width: 53vw;
+  padding-right: 20vw; /* space for button */
+}
+
+/* button behaves like +91 span */
+.password-toggle {
+  border: none;
+  background: transparent;
+  font-size: 1.8vh;
+  font-weight: 600;
+  color: #414664;
+  cursor: pointer;
+  padding: 1.8vh 0vw;
+  margin-bottom: 1.8vh;
+
+  /* 👇 pull inside input */
+  transform: translateX(-15vw);
+
+  /* keep it vertically centered */
+  
+}
+
+/* hover */
+.password-toggle:hover {
+  opacity: 0.85;
+}
+
+/* remove focus outline */
+.password-toggle:focus {
+  outline: none;
+}
+
+
 @media (min-width: 768px) {
   .register-image {
     width: 80vw;
@@ -221,6 +266,14 @@
   }
   .auth-switch a {
     font-size: 28px;
+  }
+  .password-field .input{
+     width: 48vw;
+     margin-left: 17vw;
+     padding-right: 15vw;
+  }
+  .password-toggle {
+    transform: translateX(-12vw);
   }
 }
 
@@ -273,5 +326,16 @@
     padding: 1.8vh 1vw;
     transform: translatex(8vw);
     width: 5vw;
+  }
+  .password-field .input{
+     width: 27vw;
+     margin-left: 7vw;
+     padding-right: 6vw;
+  }
+  .password-toggle {
+    transform: translateX(-5vw);
+  }
+  .password-field{
+    width: 50vw;
   }
 }
