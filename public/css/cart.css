@@ -6,6 +6,8 @@ body {
   margin-bottom: 7vh;
 }
 
+
+
 .cart-page h1 {
   font-size: 1.5rem;
   margin-bottom: 16px;
@@ -84,34 +86,17 @@ body {
 .cart-qty button {
   width: 28px;
   height: 28px;
-
-  border: none;
+  color: #fff;
+  background: #8c6b5f;
+  border: 1px solid #33211b;
   border-radius: 6px;
-
   font-size: 16px;
-  font-weight: 600;
   cursor: pointer;
-
-  color: #ffffff;
-
-  /* soft cream gradient */
-  background: linear-gradient(180deg, #eadacf 0%, #dcc4b6 50%, #cbb1a2 100%);
-
-  background: #bd947d;
-
-  /* subtle depth */
-  box-shadow: 0 2px 6px rgba(95, 68, 58, 0.25);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .cart-qty span {
   font-size: 0.9rem;
-  color: #414664;
+  color: #33211b;
 }
 
 /* =====================================================
@@ -151,10 +136,10 @@ body {
 /* Long remove button */
 .remove-btn {
   margin-top: 10px;
-  width: 60%;
-  margin-left: 20%;
-  padding: 5px 8px;
-
+  width: 80%;
+  margin-left: 10%;
+  padding: 6px 8px;
+  
   font-family: var(--font-button);
   font-size: 0.8rem;
   font-weight: 600;
@@ -166,20 +151,28 @@ body {
   color: #ffffff;
 
   /* 🔴 danger gradient */
-  background: linear-gradient(90deg, #e53935 0%, #d32f2f 50%, #b71c1c 100%);
+  background: linear-gradient(
+    90deg,
+    #e53935 0%,
+    #d32f2f 50%,
+    #b71c1c 100%
+  );
   letter-spacing: 1px;
 
   /* subtle depth */
-  box-shadow: 0 2px 10px rgba(183, 28, 28, 0.35);
+  box-shadow:
+    0 2px 10px rgba(183, 28, 28, 0.35);
 
   transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
+
 
 /* =====================================================
    SUMMARY CARD
    ===================================================== */
 
 .cart-summary {
+  
   width: 88vw;
   padding: 1.8vh 3vw;
   margin-left: 3vw;
@@ -262,15 +255,22 @@ body {
   border: none;
   cursor: pointer;
 
-  background: linear-gradient(90deg, #7f6359 0%, #6a4f45 45%, #564039 100%);
+  background: linear-gradient(
+    90deg,
+    #7f6359 0%,
+    #6a4f45 45%,
+    #564039 100%
+  );
 
-  box-shadow: 0 2px 10px rgba(47, 29, 23, 0.35);
+  box-shadow:
+    0 2px 10px rgba(47, 29, 23, 0.35);
 
   transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
 .checkout-btn:active {
   transform: translateY(1px);
-  box-shadow: 0 1px 6px rgba(47, 29, 23, 0.35);
+  box-shadow:
+    0 1px 6px rgba(47, 29, 23, 0.35);
 }
 
 /* =========================================
@@ -285,17 +285,21 @@ body {
   border-radius: 14px;
 
   /* dark gradient */
-  background: linear-gradient(90deg, #f2ebe4 0%, #e6ddd3 50%, #d9cec3 100%);
+  background: linear-gradient(
+  90deg,
+  #937569 0%,
+  #84685d 50%,
+  #6f554b 100%
+);
 
-  /* soft blended shadow */
-  box-shadow: 2px 1px 12px rgba(95, 68, 58, 0.3),
-    0 1px 8px rgba(95, 68, 58, 0.12);
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4),
+    inset 3px 3px 10px rgba(148, 148, 148, 0.5);
 
   display: flex;
-  align-items: center; /* ✅ center icon & button */
+  align-items: center;              /* ✅ center icon & button */
   gap: 12px;
 }
-.cart-address-icon {
+.cart-address-icon{
   display: flex;
   height: 4vh;
   align-items: center;
@@ -304,11 +308,12 @@ body {
 }
 .cart-address-icon i {
   font-size: 3vh;
-  color: #5f443a;
+  color: #fff;
+  
 }
 
 .cart-address-content {
-  max-width: 55vw; /* ✅ fixed readable width */
+  max-width: 55vw;                  /* ✅ fixed readable width */
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -317,7 +322,7 @@ body {
 }
 
 .cart-address-content strong {
-  color: #5f443a;
+  color: #ffffff;
   font-size: 1.1rem;
   font-family: var(--font-subtext);
 }
@@ -326,29 +331,30 @@ body {
   margin: 0;
   font-size: 0.8rem;
   line-height: 1.4;
-  color: #5f443a;
+  color: #f7f3f1;
 
-  word-wrap: break-word; /* ✅ wrap long text */
+  word-wrap: break-word;             /* ✅ wrap long text */
   overflow-wrap: break-word;
 }
+
 
 .change-address-btn {
   font-family: var(--font-button);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-
+letter-spacing: 1px;
   padding: 1vh 3vw;
   border-radius: 12px;
-  letter-spacing: 1px;
   border: none;
 
-  color: #ffffff; /* white text */
-  background-color: #5f443a; /* dark base */
+  color: #5f443a;
+  background: #ffffff;
 
-  /* 🧊 dark neumorphism */
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3),
-    -2px -2px 6px rgba(255, 255, 255, 0.3);
+  /* 🧊 Neumorphism shadows */
+  box-shadow:
+    2px 2px 8px rgba(0, 0, 0, 0.6),
+    -2px -2px 8px rgba(255, 255, 255, 0.3);
 
   transition: box-shadow 0.2s ease, transform 0.1s ease;
 }
