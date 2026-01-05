@@ -42,13 +42,14 @@
             <!-- PROFILE HEADER -->
             <div class="profile-card">
               <div class="profile-avatar">
-                <span>
+                <img src="/assets/profile.jpg">
+                <!-- <span>
                   <%= userData.name.charAt(0).toUpperCase() %>
-                </span>
+                </span> -->
               </div>
 
               <div class="profile-info">
-                <h2>My Profile</h2>
+                <h2>MY PROFILE</h2>
                 <p class="profile-name">
                   <%= userData.name %>
                 </p>
@@ -63,7 +64,7 @@
 
             <!-- ADDRESS -->
             <div class="profile-section">
-              <h3>Address</h3>
+              <h3>ADDRESS</h3>
 
               <% if (address) { %>
                 <p class="address-name">
@@ -94,7 +95,7 @@
 
             <!-- ACCOUNT LINKS -->
             <div class="profile-section">
-              <h3>Account</h3>
+              
 
               <ul class="profile-links">
                 <li><a href="/privacy-policy">Privacy Policy</a></li>

@@ -247,11 +247,8 @@ body {
   letter-spacing: 1px;
   border: none;
   cursor: pointer;
-
   background: linear-gradient(90deg, #7f6359 0%, #6a4f45 45%, #564039 100%);
-
   box-shadow: 0 2px 10px rgba(47, 29, 23, 0.35);
-
   transition: transform 0.1s ease, box-shadow 0.2s ease;
 }
 .checkout-btn:active {
@@ -264,6 +261,7 @@ body {
    ========================================= */
 
 .cart-address {
+  margin-top: 3vh;
   width: 86vw;
   margin-left: 4vw;
   padding: 1.5vh 3vw;
@@ -312,7 +310,6 @@ body {
   font-size: 0.8rem;
   line-height: 1.4;
   color: #f7f3f1;
-
   word-wrap: break-word; /* ✅ wrap long text */
   overflow-wrap: break-word;
 }

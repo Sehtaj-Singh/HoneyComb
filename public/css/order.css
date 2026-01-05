@@ -88,10 +88,6 @@
    ORDERS LIST (HAS ORDERS)
    ===================================================== */
 
-/* =====================================================
-   ORDERS LIST (HAS ORDERS STATE)
-   ===================================================== */
-
 .orders-list {
   padding: 4vh 4vw 8vh;
 }
@@ -114,17 +110,25 @@
 .order-item-card {
   display: flex;
   gap: 4vw;
-  padding: 14px;
-
+  
   background: #ffffff;
   border: 1px solid #e6e6e6;
   border-radius: 14px;
 }
 
+.order-item-image{
+  padding: 1.8vh 0;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  border-bottom-left-radius: 14px;
+  border-top-left-radius: 14px;
+  background-color: #faf6ef;
+}
+
 /* product image */
 .order-item-image img {
-  width: 22vw;
-  max-width: 90px;
+  width: 27vw;
+  
   object-fit: contain;
 }
 
@@ -139,13 +143,13 @@
 .order-item-name {
   margin: 0;
   font-family: var(--font-title);
-  font-size: 16px;
+  font-size: 20px;
   color: #414664;
 }
 
 .order-item-weight {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 15px;
   color: #5f443a;
 }
 
@@ -154,9 +158,8 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 16px;
   color: #4a3b2a;
 }
 
@@ -168,10 +171,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 12px 14px;
   background: #ffffff;
-
   border: 1px solid #e6e6e6;
   border-radius: 12px;
 }
