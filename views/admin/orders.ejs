@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><%= pageTitle %></title>
+
+<style>
+body {
+  margin: 0;
+  background: #f5f7fa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #2c2c2c;
+}
+
+/* ===== TITLE ===== */
+.page-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 22px 0 16px;
+}
+
+/* ===== WRAPPER ===== */
+.wrapper {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 14px 30px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* ===== STATS SECTION ===== */
+.stats-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.back-btn {
+  text-decoration: none;
+  background: #2c2c2c;
+  color: #fff;
+  letter-spacing: 1px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  background: #f8f9fb;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ===== FILTER NAV ===== */
+.filter-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 14px;
+}
+
+.filter-btn {
+  border: none;
+  background: #f1f2f6;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-btn.active {
+  background: #2c2c2c;
+  color: #fff;
+}
+
+/* ===== ORDERS ===== */
+.orders {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order {
+  border-radius: 12px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.order-summary {
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.order-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-id {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.order-date {
+  font-size: 12px;
+  color: #777;
+}
+
+.order-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+.status {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.pending { background:#fff3cd; color:#856404; }
+.shipped { background:#d6eaf8; color:#1b4f72; }
+.delivered { background:#d5f4e6; color:#0b5345; }
+.cancelled { background:#fadbd8; color:#943126; }
+
+.arrow {
+  transition: transform .25s;
+}
+
+.order.open .arrow {
+  transform: rotate(180deg);
+}
+
+/* ===== DETAILS ===== */
+.details {
+  display: none;
+  border-top: 1px solid #eee;
+  padding: 14px;
+  font-size: 13px;
+}
+
+.order.open .details {
+  display: block;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="page-title">Orders</h1>
+
+<div class="wrapper">
+
+  <!-- SECTION 1: STATS + BACK -->
+  <div class="card">
+    <div class="stats-header">
+      <div></div>
+      <a href="/admin" class="back-btn">← Admin Panel</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Total Orders</div>
+        <div class="stat-value"><%= orders.length %></div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Orders This Month</div>
+        <div class="stat-value">
+          <%
+            const now = new Date();
+            const monthOrders = orders.filter(o =>
+              o.items?.[0]?.createdAt &&
+              new Date(o.items[0].createdAt).getMonth() === now.getMonth() &&
+              new Date(o.items[0].createdAt).getFullYear() === now.getFullYear()
+            ).length;
+          %>
+          <%= monthOrders %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: FILTER + ORDERS -->
+  <div class="card">
+
+    <div class="filter-nav">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Pending</button>
+      <button class="filter-btn">Shipped</button>
+      <button class="filter-btn">Delivered</button>
+      <button class="filter-btn">Cancelled</button>
+    </div>
+
+    <div class="orders">
+      <% orders.forEach(order => {
+        const items = order.items || [];
+        const first = items[0] || {};
+        const status = first.status || "pending";
+        const total = items.reduce((s,i)=>s+(i.total||0),0);
+      %>
+
+      <div class="order" data-status="<%= status %>">
+        <div class="order-summary" onclick="this.parentElement.classList.toggle('open')">
+          <div class="order-left">
+            <div class="order-id">Order #<%= order._id.toString().slice(-8) %></div>
+            <div class="order-date">
+              <%= first.createdAt ? new Date(first.createdAt).toLocaleString("en-IN") : "" %>
+            </div>
+          </div>
+
+          <div class="order-right">
+            <div class="amount">₹<%= total.toLocaleString("en-IN") %></div>
+            <span class="status <%= status %>"><%= status %></span>
+            <span class="arrow">▼</span>
+          </div>
+        </div>
+
+        <div class="details">
+          Firebase UID: <%= order.firebaseUid %><br>
+          User ID: <%= order.userId %><br><br>
+
+          <% items.forEach(item => { %>
+            Product: <%= item.productId %><br>
+            Qty: <%= item.quantity %><br>
+            Total: ₹<%= item.total %><br>
+            Status: <%= item.status %><br><br>
+          <% }) %>
+        </div>
+      </div>
+
+      <% }) %>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

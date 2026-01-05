@@ -2,8 +2,10 @@
 .profile-page {
   padding: 16px;
   background: #f5f7f8;
-  min-height: 100vh;
   font-family: 'Inter', sans-serif;
+}
+body{
+  background-color: #f5f7f8;
 }
 
 /* PROFILE HEADER */

@@ -24,7 +24,7 @@ const rootDir = require("./utils/pathUtil");
 const storeRouter = require("./routers/storeRouter");
 const loginRouter = require("./routers/loginRouter");
 const userRouter = require("./routers/userRouter");
-
+const adminRouter = require("./routers/adminRouter");
 
 //express functions
 const server = express();
@@ -57,6 +57,7 @@ server.use((req, res, next) => {
 server.use(storeRouter);
 server.use(loginRouter);
 server.use(userRouter);
+server.use(`/admin` ,adminRouter);
 
 // EJS
 server.set(`view engine`, `ejs`);
